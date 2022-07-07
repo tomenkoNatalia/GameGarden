@@ -55,7 +55,6 @@ class Button1:
     def check_click(self):
         mouse_pos = pygame.mouse.get_pos()
         if self.type == 1:
-            self.visible = True
             if self.top_rect.collidepoint(mouse_pos):
                 self.top_color = '#D74B4B'
                 if pygame.mouse.get_pressed()[0]:
@@ -63,26 +62,23 @@ class Button1:
                     self.pressed = True
                 else:
                     self.dynamic_elevation = self.dynamic_elevation
-
-                if self.pressed:
-                    pygame.display.update()
+                # if self.pressed:
+                #      self.dynamic_elevation = 0
             else:
                 self.dynamic_elevation = self.elevation
                 self.top_color = '#475F77'
-        if self.type == 2:
-                if self.top_rect.collidepoint(mouse_pos):
-                    self.top_color = '#D74B4B'
-                    if pygame.mouse.get_pressed()[0]:
-                        self.dynamic_elevation = 0
-                        self.pressed = True
-                    else:
-                        self.dynamic_elevation = self.dynamic_elevation
-                    if self.pressed:
-                        self.dynamic_elevation = self.dynamic_elevation
-                # else:
-                #         self.dynamic_elevation = self.elevation
-                #         self.top_color = '#475F77'
 
+        if self.type == 2:
+            if self.top_rect.collidepoint(mouse_pos) and not self.pressed:
+                self.top_color = '#D74B4B'
+                if pygame.mouse.get_pressed()[0]:
+                    self.dynamic_elevation = 0
+                    self.pressed = True
+                else:
+                    self.dynamic_elevation = self.dynamic_elevation
+                if self.pressed:
+                    self.dynamic_elevation = self.dynamic_elevation
+                    self.top_color = '#D74B4B'
 
 
 
