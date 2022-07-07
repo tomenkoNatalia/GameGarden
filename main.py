@@ -1,6 +1,5 @@
 import pygame
 from sys import exit
-import string
 
 pygame.init()
 width = 1000
@@ -9,19 +8,17 @@ screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Словесний сад")
 clock = pygame.time.Clock()
 start_game = True
-actual_game = False
+level1 = False
+level2 = False
+level3 = False
+level4 = False
+level5 = False
+lost = False
+won = False
+rules = False
 
-
-# actual_gamelvl1 = False
-# actual_gamelvl2 = False
-# actual_gamelvl3 = False
-# actual_gamelvl4 = False
-# actual_gamelvl5 = False
-# finish_game = False
 
 class Button1:
-    original_y_pos = 10
-
     def __init__(self, text, width, height, x, y, elevation, type=1):
         # Core attributes
         self.type = type
@@ -30,11 +27,7 @@ class Button1:
         self.dynamic_elevation = elevation
         self.original_y_pos = y
         self.original_x_pos = x
-        self.ispressed = False
 
-        # if self.ispressed:
-        #     self.top_color = '#D74B4B'
-        # top rectangle
         self.top_rect = pygame.Rect(x, y, width, height)
         self.top_color = '#475F77'
 
@@ -73,7 +66,7 @@ class Button1:
                 self.top_color = '#475F77'
 
         if self.type == 2:
-            if self.top_rect.collidepoint(mouse_pos) and not self.ispressed:
+            if self.top_rect.collidepoint(mouse_pos):
                 self.top_color = '#475F77'
                 if pygame.mouse.get_pressed()[0]:
                     self.dynamic_elevation = 0
@@ -89,77 +82,168 @@ class Button1:
                 self.top_color = '#475F77'
 
 
-
-# class GameWindow:
-#     def __init__(self, image, text, field, pos):
-#         self.back = pygame.image.load(image).convert_alpha()
-#         self.text_surf = font2.render(text, True, '#FFFFFF')
-#         self.position = pos[1]
-#         self.text_rect = pygame.Rect(pos, (100, 100))
-#         self.field = pygame.image.load(field).get_rect()
-#         self.field_rect = self.field.get_rect()
-#         self.lines = font2.render("-", True, '#FFFFFF')
-#     def draw(self):
-#         #lines logic
-
-letters = []
-test_start_surface = pygame.image.load("C:/Users/User/Downloads/imgonline-com-ua-Resize-DS4h8DhV2K.jpg")
-font1 = pygame.font.Font("C:/Users/User/Downloads/Adigiana_Extreme.ttf", 60)
-font2 = pygame.font.Font("C:/Users/User/Downloads/Adigiana_Extreme.ttf", 30)
-font3 = pygame.font.Font("C:/Users/User/Downloads/Adigiana_Extreme.ttf", 40)
-text_surface1 = font1.render("Вітаємо у словесному саду!", True, "#edeef3")
-text_surface2 = font3.render("Оберіть рівень складності гри", True, "#6d6875")
-b1 = Button1('level 1', 140, 60, 50, 300, 10, 1)
-b2 = Button1('Level 2', 140, 60, 240, 300, 10, 1)
-b3 = Button1('Level 3', 140, 60, 430, 300, 10, 1)
-b4 = Button1('Level 4', 140, 60, 620, 300, 10, 1)
-b5 = Button1('Level 5', 140, 60, 810, 300, 10, 1)
-b6 = Button1('Level 6', 140, 60, 840, 300, 10, 2)
-
-alphabet = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-x = 100
-for i in range(26):
-        letter_1 = Button1(alphabet[i], 30, 40, x, 100, 5, 2)
-        letters.append(letter_1)
-        x += 40
-
-
-# for i in range(14, 26):
-#                 x = 20
-#                 letter_2 = Button1(alphabet[i], 30, 40, x, 100, 5, 2)
-#                 letters.append(letter_2)
-#                 x += 10
+# Метод який зв'яже кнопку зі словом
 
 def redraw_window():
     for letter in letters:
         letter.draw()
-    # pygame.display.update()
 
+
+class gameWindow:
+    def __init__(self, back, colorText, text, field, xtext, ytext, xfield, yfield, type=1):
+        self.back = back
+        self.text_surf = font1.render(text, True, colorText)
+        self.text_rect = pygame.Rect(xtext, ytext, 100, 100)
+        self.field = pygame.image.load(field)
+        self.field_rect = pygame.Rect(xfield, yfield, 10, 300)
+        self.type = type
+
+    def draw(self):
+
+        screen.fill(self.back)
+        screen.blit(self.field, self.field_rect)
+        screen.blit(self.text_surf, self.text_rect)
+        if self.type == 1:
+            redraw_window()
+            b7.draw()
+        if self.type == 2:
+            b8.draw()
+            b9.draw()
+
+        # додати метод який підключає рандомне слово, переводить кожен символ у - і виводить на екран
+        # а потім якщо воно вгадується - конвертує - назад у букву, або якось інакше це зробити я хз
+
+
+# шрифти налаштування
+newFont = "materials/Adigiana_Extreme.ttf"
+font1 = pygame.font.Font(newFont, 60)
+font2 = pygame.font.Font(newFont, 30)
+font3 = pygame.font.Font(newFont, 40)
+
+# стартове вікно налаштування (по ідеї там якось можна кнопки об'єднати у групу щоб не виводити кожну окремо)
+test_start_surface = pygame.image.load("materials/startpic.jpg")
+text_surface1 = font1.render("Вітаємо у словесному саду!", True, "#edeef3")
+text_surface2 = font3.render("Оберіть рівень складності гри", True, "#6d6875")
+b1 = Button1('Рівень 1', 140, 60, 50, 300, 10, 1)
+b2 = Button1('Рівень 2', 140, 60, 240, 300, 10, 1)
+b3 = Button1('Рівень 3', 140, 60, 430, 300, 10, 1)
+b4 = Button1('Рівень 4', 140, 60, 620, 300, 10, 1)
+b5 = Button1('Рівень 5', 140, 60, 810, 300, 10, 1)
+b6 = Button1('Правила гри', 200, 80, 700, 400, 10, 1)
+b7 = Button1('Назад', 140, 50, 810, 400, 10, 1)
+b8 = Button1('Грати знову', 140, 50, 50, 400, 10, 1)
+b9 = Button1('Вийти з гри', 140, 50, 810, 400, 10, 1)
+
+# вікна на рівні
+lvl1 = gameWindow("#EAB595", "#79616F", "Рівень 1", "materials/lvl1.1.jpg", 350, 1, 30, 70, 1)
+lvl2 = gameWindow("#EAB595", "#79616F", "Рівень 2", "materials/lvl2.1.jpg", 350, 1, 30, 70, 1)
+lvl3 = gameWindow("#EAB595", "#79616F", "Рівень 3", "materials/lvl3.1.jpg", 350, 1, 30, 70, 1)
+lvl4 = gameWindow("#EAB595", "#79616F", "Рівень 4", "materials/lvl4.1.jpg", 350, 1, 30, 70, 1)
+lvl5 = gameWindow("#EAB595", "#79616F", "Рівень 5", "materials/lvl5.1.jpg", 350, 1, 30, 70, 1)
+lost1 = gameWindow("#EAB595", "#79616F", "О ні, ви програли((", "materials/lost1.jpg", 350, 1, 0, 0, 2)
+won1 = gameWindow("#EAB595", "#79616F", "Вітаю, ви виграли!", "materials/win1.jpg", 300, 1, 0, 0, 2)
+# для правил
+text_rules1 = font1.render("Правила гри", True, "#edeef3")
+text_rules2 = font2.render("Тут щось буде \n тут щось буде \n тут багато чого буде \n  ураура правила клас", True,
+                           "#edeef3")
+# кнопки букви розташування
+letters = []
+alphabet = list("АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ'")
+# Це потім треба норм переписати бо надто втупу
+x1 = 710
+x2 = 710
+x3 = 710
+x4 = 710
+x5 = 710
+for i in range(7):
+    letter_1 = Button1(alphabet[i], 30, 40, x1, 100, 5, 2)
+    letters.append(letter_1)
+    x1 += 40
+for i in range(7, 14):
+    letter_1 = Button1(alphabet[i], 30, 40, x2, 150, 5, 2)
+    letters.append(letter_1)
+    x2 += 40
+for i in range(14, 21):
+    letter_1 = Button1(alphabet[i], 30, 40, x3, 200, 5, 2)
+    letters.append(letter_1)
+    x3 += 40
+for i in range(21, 28):
+    letter_1 = Button1(alphabet[i], 30, 40, x4, 250, 5, 2)
+    letters.append(letter_1)
+    x4 += 40
+for i in range(28, 34):
+    letter_1 = Button1(alphabet[i], 30, 40, x5, 300, 5, 2)
+    letters.append(letter_1)
+    x5 += 40
+
+# Сам процес гри
+# можливо його можна оптимізувати, але воно працює і так, і на цьому дякую
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-        # draw start window
-        # draw game window
-        # draw lose and win window
         if start_game:
             screen.blit(test_start_surface, (0, 0))
             screen.blit(text_surface1, (200, 50))
             screen.blit(text_surface2, (300, 200))
             b1.draw()
-            # b2.draw()
-            # b3.draw()
-            # b4.draw()
-            # b5.draw()
+            b2.draw()
+            b3.draw()
+            b4.draw()
+            b5.draw()
+            b6.draw()
 
+            # won.draw()  перевірка вікна виграшу і програшу
+            # lost.draw()
             if b1.pressed:
                 start_game = False
-                actual_game = True
+                level1 = True
+            elif b2.pressed:
+                start_game = False
+                level2 = True
+            elif b3.pressed:
+                start_game = False
+                level3 = True
+            elif b4.pressed:
+                start_game = False
+                level4 = True
+            elif b5.pressed:
+                start_game = False
+                level5 = True
+            elif b6.pressed:
+                start_game = False
+                rules = True
 
-        elif actual_game:
-            screen.fill("Black")
-            redraw_window()
-            b6.draw()
+        elif level1:
+            lvl1.draw()
+            # if b7.pressed:     не розумію як вернутись назад адекватно, і це бажано прописати в абстрактному класі вікна
+            #     level1 = False
+            #     start_game = True
+
+        elif level2:
+            lvl2.draw()
+
+        elif level3:
+            lvl3.draw()
+
+        elif level4:
+            lvl4.draw()
+
+        elif level5:
+            lvl5.draw()
+
+        elif lost:
+            lost1.draw()
+
+        elif won:
+            won1.draw()
+
+        elif rules:
+            screen.fill("#D87F81")
+            screen.blit(text_rules1, (250, 10))
+            screen.blit(text_rules2, (50, 80))
+            b7.draw()
+
         pygame.display.update()
         clock.tick(60)
