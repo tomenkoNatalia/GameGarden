@@ -138,15 +138,11 @@ class Word:
 
     def space_out_word(self):
         spaced_word = ''
-        guessed_letters = [self.guessed]
         for letter in self.word:
-            if letter != ' ':
+            if letter in self.guessed:
+                spaced_word += letter + ' '
+            else:
                 spaced_word += '_ '
-                for i in guessed_letters:
-                    if letter == i:
-                        spaced_word += letter + ' '
-            elif letter == ' ':
-                spaced_word += ' '
         return spaced_word
 
     def check_letter(self, letter):
@@ -198,7 +194,7 @@ text_rules2 = font2.render("Тут щось буде \n тут щось буде
                            "#edeef3")
 # кнопки букви розташування
 letters = []
-alphabet = list("abcdefghijИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ'")
+alphabet = list("abcdefghijklmnopqrstuvwxyz'")
 
 x_position = 710
 y_position = 100
@@ -207,9 +203,12 @@ for i in range(7):
     letters.append(Button(alphabet[i], 30, 40, x_position, y_position, 5, 2))
     letters.append(Button(alphabet[i+7], 30, 40, x_position, y_position + 50, 5, 2))
     letters.append(Button(alphabet[i+14], 30, 40, x_position, y_position + 100, 5, 2))
-    letters.append(Button(alphabet[i+21], 30, 40, x_position, y_position + 150, 5, 2))
-    if i < 6:
-        letters.append(Button(alphabet[i+28], 30, 40, x_position, y_position + 200, 5, 2))
+    if i < 5:
+        letters.append(Button(alphabet[i+21], 30, 40, x_position, y_position + 150, 5, 2))
+
+    # letters.append(Button(alphabet[i+21], 30, 40, x_position, y_position + 150, 5, 2))
+    # if i < 6:
+    #     letters.append(Button(alphabet[i+28], 30, 40, x_position, y_position + 200, 5, 2))
     x_position += 40
 
 word = Word()

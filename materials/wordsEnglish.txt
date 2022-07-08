@@ -1,5 +1,4 @@
-bicycle
 jacket
-thermometer
-automobile
+window
+marker
 abortion
