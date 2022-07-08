@@ -22,6 +22,7 @@ rules = False
 class Button:
     def __init__(self, text, width, height, x, y, elevation, type=1):
         # Core attributes
+        self.letter = text
         self.type = type
         self.pressed = False
         self.elevation = elevation
@@ -77,6 +78,7 @@ class Button:
                     self.dynamic_elevation = self.dynamic_elevation
                 if self.pressed:
                     self.dynamic_elevation = self.dynamic_elevation
+
                 else:
                     self.top_color = '#D74B4B'
             else:
@@ -84,10 +86,6 @@ class Button:
 
 
 # Метод який зв'яже кнопку зі словом
-
-def redraw_window():
-    for letter in letters:
-        letter.draw()
 
 
 class GameWindow:
@@ -97,23 +95,30 @@ class GameWindow:
         self.text_rect = pygame.Rect(xtext, ytext, 100, 100)
         self.field = pygame.image.load(field)
         self.field_rect = pygame.Rect(xfield, yfield, 10, 300)
-        self.word = self.select_word()
-        self.guessed = []
-        self.spaced_word = font1.render(self.space_out_word(), True, "#FFFFFF")
-        self.word_rect = pygame.Rect(100, 400, 100, 100)
         self.type = type
 
     def draw(self):
         screen.fill(self.background)
         screen.blit(self.field, self.field_rect)
         screen.blit(self.text, self.text_rect)
-        screen.blit(self.spaced_word, self.word_rect)
         if self.type == 1:
             redraw_window()
             go_back_button.draw()
         if self.type == 2:
             play_again_button.draw()
             exit_button.draw()
+
+        # додати метод який підключає рандомне слово, переводить кожен символ у - і виводить на екран
+        # а потім якщо воно вгадується - конвертує - назад у букву, або якось інакше це зробити я хз
+class Word:
+    def __init__(self):
+        self.word = self.select_word()
+        self.guessed = ''
+        self.spaced_word = font1.render(self.space_out_word(), True, "#FFFFFF")
+        self.word_rect = pygame.Rect(100, 400, 100, 100)
+
+    def draw(self):
+        screen.blit(self.spaced_word, self.word_rect)
 
     def select_word(self):
         # if self.text_surf == "Рівень 1":
@@ -142,9 +147,17 @@ class GameWindow:
                 spaced_word += ' '
         return spaced_word
 
-        # додати метод який підключає рандомне слово, переводить кожен символ у - і виводить на екран
-        # а потім якщо воно вгадується - конвертує - назад у букву, або якось інакше це зробити я хз
+    def check_letter(self, letter):
+        contains = False
+        for x in self.word:
+            if x == letter:
+                contains = True
+        if contains:
+            self.guessed += letter
 
+def redraw_window():
+    for letter in letters:
+        letter.draw()
 
 # шрифти налаштування
 newFont = "materials/Adigiana_Extreme.ttf"
@@ -235,6 +248,8 @@ while True:
 
         elif level1:
             lvl1.draw()
+            guessed = ''
+
             # if b7.pressed:     не розумію як вернутись назад адекватно, і це бажано прописати в абстрактному класі вікна
             #     level1 = False
             #     start_game = True
