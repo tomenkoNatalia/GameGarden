@@ -112,8 +112,11 @@ class GameWindow:
 
         # додати метод який підключає рандомне слово, переводить кожен символ у - і виводить на екран
         # а потім якщо воно вгадується - конвертує - назад у букву, або якось інакше це зробити я хз
+
+
 class Word:
-    def __init__(self):
+    def __init__(self, level):
+        self.level = level
         self.word = self.select_word()
         self.guessed = ''
         # self.spaced_word = font1.render(self.space_out_word(), True, "#FFFFFF")
@@ -123,16 +126,12 @@ class Word:
         screen.blit(font1.render(self.space_out_word(), True, "#FFFFFF"), self.word_rect)
 
     def select_word(self):
-        # if self.text_surf == "Рівень 1":
-        #     file = open('materials/words5.txt')
-        # elif self.text_surf == "Рівень 4" or self.text_surf == "Рівень 5":
-        #     file = open('materials/words12.txt')
-        # else:
-        #     file = open('materials/words8.txt')
-
-        # file = open('materials/wordsEnglish.txt')
-
-        file = open('materials/words8.txt', encoding="utf8")
+        if self.level == 1:
+            file = open('materials/words5.txt', encoding="utf8")
+        elif self.level == 4 or self.level == 5:
+            file = open('materials/words12.txt', encoding="utf8")
+        else:
+            file = open('materials/words8.txt', encoding="utf8")
         f = file.readlines()
         rand = random.randrange(0, len(f) - 1)
 
@@ -156,9 +155,11 @@ class Word:
             self.guessed += letter
             print(self.guessed)
 
+
 def redraw_window():
     for letter in letters:
         letter.draw()
+
 
 # шрифти налаштування
 newFont = "materials/Adigiana_Extreme.ttf"
@@ -203,17 +204,15 @@ y_position = 100
 
 for i in range(7):
     letters.append(Button(alphabet[i], 30, 40, x_position, y_position, 5, 2))
-    letters.append(Button(alphabet[i+7], 30, 40, x_position, y_position + 50, 5, 2))
-    letters.append(Button(alphabet[i+14], 30, 40, x_position, y_position + 100, 5, 2))
+    letters.append(Button(alphabet[i + 7], 30, 40, x_position, y_position + 50, 5, 2))
+    letters.append(Button(alphabet[i + 14], 30, 40, x_position, y_position + 100, 5, 2))
     # if i < 5:
     #     letters.append(Button(alphabet[i+21], 30, 40, x_position, y_position + 150, 5, 2))
 
-    letters.append(Button(alphabet[i+21], 30, 40, x_position, y_position + 150, 5, 2))
+    letters.append(Button(alphabet[i + 21], 30, 40, x_position, y_position + 150, 5, 2))
     if i < 5:
-        letters.append(Button(alphabet[i+28], 30, 40, x_position, y_position + 200, 5, 2))
+        letters.append(Button(alphabet[i + 28], 30, 40, x_position, y_position + 200, 5, 2))
     x_position += 40
-
-word = Word()
 
 # Сам процес гри
 # можливо його можна оптимізувати, але воно працює і так, і на цьому дякую
@@ -252,23 +251,23 @@ while True:
                 rules = True
 
         elif level1:
+            word = Word(1)
             lvl1.draw()
-            guessed = ''
-
-            # if b7.pressed:     не розумію як вернутись назад адекватно, і це бажано прописати в абстрактному класі вікна
-            #     level1 = False
-            #     start_game = True
 
         elif level2:
+            word = Word(2)
             lvl2.draw()
 
         elif level3:
+            word = Word(3)
             lvl3.draw()
 
         elif level4:
+            word = Word(4)
             lvl4.draw()
 
         elif level5:
+            word = Word(5)
             lvl5.draw()
 
         elif lost:
