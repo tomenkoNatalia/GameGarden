@@ -74,6 +74,7 @@ class Button:
                     self.dynamic_elevation = 0
                     self.top_color = '#D74B4B'
                     self.pressed = True
+                    word.check_letter(self.letter)
                 else:
                     self.dynamic_elevation = self.dynamic_elevation
                 if self.pressed:
@@ -101,6 +102,7 @@ class GameWindow:
         screen.fill(self.background)
         screen.blit(self.field, self.field_rect)
         screen.blit(self.text, self.text_rect)
+        word.draw()
         if self.type == 1:
             redraw_window()
             go_back_button.draw()
@@ -114,11 +116,11 @@ class Word:
     def __init__(self):
         self.word = self.select_word()
         self.guessed = ''
-        self.spaced_word = font1.render(self.space_out_word(), True, "#FFFFFF")
+        # self.spaced_word = font1.render(self.space_out_word(), True, "#FFFFFF")
         self.word_rect = pygame.Rect(100, 400, 100, 100)
 
     def draw(self):
-        screen.blit(self.spaced_word, self.word_rect)
+        screen.blit(font1.render(self.space_out_word(), True, "#FFFFFF"), self.word_rect)
 
     def select_word(self):
         # if self.text_surf == "Рівень 1":
@@ -127,6 +129,7 @@ class Word:
         #     file = open('materials/words12.txt')
         # else:
         #     file = open('materials/words8.txt')
+
         file = open('materials/wordsEnglish.txt')
         f = file.readlines()
         rand = random.randrange(0, len(f) - 1)
@@ -136,14 +139,13 @@ class Word:
     def space_out_word(self):
         spaced_word = ''
         guessed_letters = [self.guessed]
-        for x in range(len(self.word)):
-            if self.word[x] != ' ':
+        for letter in self.word:
+            if letter != ' ':
                 spaced_word += '_ '
-                for i in range(len(guessed_letters)):
-                    if self.word[x].upper() == guessed_letters[i]:
-                        spaced_word = spaced_word[:-2]
-                        spaced_word += self.word[x].upper() + ' '
-            elif self.word[x] == ' ':
+                for i in guessed_letters:
+                    if letter == i:
+                        spaced_word += letter + ' '
+            elif letter == ' ':
                 spaced_word += ' '
         return spaced_word
 
@@ -154,6 +156,7 @@ class Word:
                 contains = True
         if contains:
             self.guessed += letter
+            print(self.guessed)
 
 def redraw_window():
     for letter in letters:
@@ -195,7 +198,7 @@ text_rules2 = font2.render("Тут щось буде \n тут щось буде
                            "#edeef3")
 # кнопки букви розташування
 letters = []
-alphabet = list("АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ'")
+alphabet = list("abcdefghijИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ'")
 
 x_position = 710
 y_position = 100
@@ -209,6 +212,7 @@ for i in range(7):
         letters.append(Button(alphabet[i+28], 30, 40, x_position, y_position + 200, 5, 2))
     x_position += 40
 
+word = Word()
 
 # Сам процес гри
 # можливо його можна оптимізувати, але воно працює і так, і на цьому дякую
