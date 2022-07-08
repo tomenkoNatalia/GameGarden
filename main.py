@@ -18,7 +18,7 @@ won = False
 rules = False
 
 
-class Button1:
+class Button:
     def __init__(self, text, width, height, x, y, elevation, type=1):
         # Core attributes
         self.type = type
@@ -105,10 +105,10 @@ class gameWindow:
         screen.blit(self.text_surf, self.text_rect)
         if self.type == 1:
             redraw_window()
-            b7.draw()
+            go_back_button.draw()
         if self.type == 2:
-            b8.draw()
-            b9.draw()
+            play_again_button.draw()
+            exit_button.draw()
 
         # додати метод який підключає рандомне слово, переводить кожен символ у - і виводить на екран
         # а потім якщо воно вгадується - конвертує - назад у букву, або якось інакше це зробити я хз
@@ -124,15 +124,15 @@ font3 = pygame.font.Font(newFont, 40)
 test_start_surface = pygame.image.load("materials/startpic.jpg")
 text_surface1 = font1.render("Вітаємо у словесному саду!", True, "#edeef3")
 text_surface2 = font3.render("Оберіть рівень складності гри", True, "#6d6875")
-b1 = Button1('Рівень 1', 140, 60, 50, 300, 10, 1)
-b2 = Button1('Рівень 2', 140, 60, 240, 300, 10, 1)
-b3 = Button1('Рівень 3', 140, 60, 430, 300, 10, 1)
-b4 = Button1('Рівень 4', 140, 60, 620, 300, 10, 1)
-b5 = Button1('Рівень 5', 140, 60, 810, 300, 10, 1)
-b6 = Button1('Правила гри', 200, 80, 700, 400, 10, 1)
-b7 = Button1('Назад', 140, 50, 810, 400, 10, 1)
-b8 = Button1('Грати знову', 140, 50, 50, 400, 10, 1)
-b9 = Button1('Вийти з гри', 140, 50, 810, 400, 10, 1)
+level1_button = Button('Рівень 1', 140, 60, 50, 300, 10, 1)
+level2_button = Button('Рівень 2', 140, 60, 240, 300, 10, 1)
+level3_button = Button('Рівень 3', 140, 60, 430, 300, 10, 1)
+level4_button = Button('Рівень 4', 140, 60, 620, 300, 10, 1)
+level5_button = Button('Рівень 5', 140, 60, 810, 300, 10, 1)
+rules_button = Button('Правила гри', 200, 80, 700, 400, 10, 1)
+go_back_button = Button('Назад', 140, 50, 810, 400, 10, 1)
+play_again_button = Button('Грати знову', 140, 50, 50, 400, 10, 1)
+exit_button = Button('Вийти з гри', 140, 50, 810, 400, 10, 1)
 
 # вікна на рівні
 lvl1 = gameWindow("#EAB595", "#79616F", "Рівень 1", "materials/lvl1.1.jpg", 350, 1, 30, 70, 1)
@@ -149,32 +149,24 @@ text_rules2 = font2.render("Тут щось буде \n тут щось буде
 # кнопки букви розташування
 letters = []
 alphabet = list("АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ'")
-# Це потім треба норм переписати бо надто втупу
-x1 = 710
-x2 = 710
-x3 = 710
-x4 = 710
-x5 = 710
+
+x_position = 710
+y_position = 100
+
 for i in range(7):
-    letter_1 = Button1(alphabet[i], 30, 40, x1, 100, 5, 2)
-    letters.append(letter_1)
-    x1 += 40
-for i in range(7, 14):
-    letter_1 = Button1(alphabet[i], 30, 40, x2, 150, 5, 2)
-    letters.append(letter_1)
-    x2 += 40
-for i in range(14, 21):
-    letter_1 = Button1(alphabet[i], 30, 40, x3, 200, 5, 2)
-    letters.append(letter_1)
-    x3 += 40
-for i in range(21, 28):
-    letter_1 = Button1(alphabet[i], 30, 40, x4, 250, 5, 2)
-    letters.append(letter_1)
-    x4 += 40
-for i in range(28, 34):
-    letter_1 = Button1(alphabet[i], 30, 40, x5, 300, 5, 2)
-    letters.append(letter_1)
-    x5 += 40
+    letter_row1 = Button(alphabet[i], 30, 40, x_position, y_position, 5, 2)
+    letters.append(letter_row1)
+    letter_row2 = Button(alphabet[i+7], 30, 40, x_position, y_position + 50, 5, 2)
+    letters.append(letter_row2)
+    letter_row3 = Button(alphabet[i+14], 30, 40, x_position, y_position + 100, 5, 2)
+    letters.append(letter_row3)
+    letter_row4 = Button(alphabet[i+21], 30, 40, x_position, y_position + 150, 5, 2)
+    letters.append(letter_row4)
+    if i < 6:
+        letter_row5 = Button(alphabet[i+28], 30, 40, x_position, y_position + 200, 5, 2)
+        letters.append(letter_row5)
+    x_position += 40
+
 
 # Сам процес гри
 # можливо його можна оптимізувати, але воно працює і так, і на цьому дякую
@@ -187,31 +179,31 @@ while True:
             screen.blit(test_start_surface, (0, 0))
             screen.blit(text_surface1, (200, 50))
             screen.blit(text_surface2, (300, 200))
-            b1.draw()
-            b2.draw()
-            b3.draw()
-            b4.draw()
-            b5.draw()
-            b6.draw()
+            level1_button.draw()
+            level2_button.draw()
+            level3_button.draw()
+            level4_button.draw()
+            level5_button.draw()
+            rules_button.draw()
 
             # won.draw()  перевірка вікна виграшу і програшу
             # lost.draw()
-            if b1.pressed:
+            if level1_button.pressed:
                 start_game = False
                 level1 = True
-            elif b2.pressed:
+            elif level2_button.pressed:
                 start_game = False
                 level2 = True
-            elif b3.pressed:
+            elif level3_button.pressed:
                 start_game = False
                 level3 = True
-            elif b4.pressed:
+            elif level4_button.pressed:
                 start_game = False
                 level4 = True
-            elif b5.pressed:
+            elif level5_button.pressed:
                 start_game = False
                 level5 = True
-            elif b6.pressed:
+            elif rules_button.pressed:
                 start_game = False
                 rules = True
 
@@ -243,7 +235,7 @@ while True:
             screen.fill("#D87F81")
             screen.blit(text_rules1, (250, 10))
             screen.blit(text_rules2, (50, 80))
-            b7.draw()
+            go_back_button.draw()
 
         pygame.display.update()
         clock.tick(60)
