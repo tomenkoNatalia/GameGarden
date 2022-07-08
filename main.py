@@ -124,11 +124,19 @@ font3 = pygame.font.Font(newFont, 40)
 test_start_surface = pygame.image.load("materials/startpic.jpg")
 text_surface1 = font1.render("Вітаємо у словесному саду!", True, "#edeef3")
 text_surface2 = font3.render("Оберіть рівень складності гри", True, "#6d6875")
-level1_button = Button('Рівень 1', 140, 60, 50, 300, 10, 1)
-level2_button = Button('Рівень 2', 140, 60, 240, 300, 10, 1)
-level3_button = Button('Рівень 3', 140, 60, 430, 300, 10, 1)
-level4_button = Button('Рівень 4', 140, 60, 620, 300, 10, 1)
-level5_button = Button('Рівень 5', 140, 60, 810, 300, 10, 1)
+# level1_button = Button('Рівень 1', 140, 60, 50, 300, 10, 1)
+# level2_button = Button('Рівень 2', 140, 60, 240, 300, 10, 1)
+# level3_button = Button('Рівень 3', 140, 60, 430, 300, 10, 1)
+# level4_button = Button('Рівень 4', 140, 60, 620, 300, 10, 1)
+# level5_button = Button('Рівень 5', 140, 60, 810, 300, 10, 1)
+# list of level buttons (1-5)
+level_buttons = list()
+level_buttons.append(Button('Рівень 1', 140, 60, 50, 300, 10, 1))
+level_buttons.append(Button('Рівень 2', 140, 60, 240, 300, 10, 1))
+level_buttons.append(Button('Рівень 3', 140, 60, 430, 300, 10, 1))
+level_buttons.append(Button('Рівень 4', 140, 60, 620, 300, 10, 1))
+level_buttons.append(Button('Рівень 5', 140, 60, 810, 300, 10, 1))
+
 rules_button = Button('Правила гри', 200, 80, 700, 400, 10, 1)
 go_back_button = Button('Назад', 140, 50, 810, 400, 10, 1)
 play_again_button = Button('Грати знову', 140, 50, 50, 400, 10, 1)
@@ -154,17 +162,12 @@ x_position = 710
 y_position = 100
 
 for i in range(7):
-    letter_row1 = Button(alphabet[i], 30, 40, x_position, y_position, 5, 2)
-    letters.append(letter_row1)
-    letter_row2 = Button(alphabet[i+7], 30, 40, x_position, y_position + 50, 5, 2)
-    letters.append(letter_row2)
-    letter_row3 = Button(alphabet[i+14], 30, 40, x_position, y_position + 100, 5, 2)
-    letters.append(letter_row3)
-    letter_row4 = Button(alphabet[i+21], 30, 40, x_position, y_position + 150, 5, 2)
-    letters.append(letter_row4)
+    letters.append(Button(alphabet[i], 30, 40, x_position, y_position, 5, 2))
+    letters.append(Button(alphabet[i+7], 30, 40, x_position, y_position + 50, 5, 2))
+    letters.append(Button(alphabet[i+14], 30, 40, x_position, y_position + 100, 5, 2))
+    letters.append(Button(alphabet[i+21], 30, 40, x_position, y_position + 150, 5, 2))
     if i < 6:
-        letter_row5 = Button(alphabet[i+28], 30, 40, x_position, y_position + 200, 5, 2)
-        letters.append(letter_row5)
+        letters.append(Button(alphabet[i+28], 30, 40, x_position, y_position + 200, 5, 2))
     x_position += 40
 
 
@@ -179,28 +182,25 @@ while True:
             screen.blit(test_start_surface, (0, 0))
             screen.blit(text_surface1, (200, 50))
             screen.blit(text_surface2, (300, 200))
-            level1_button.draw()
-            level2_button.draw()
-            level3_button.draw()
-            level4_button.draw()
-            level5_button.draw()
+            for level_button in level_buttons:
+                level_button.draw()
             rules_button.draw()
 
             # won.draw()  перевірка вікна виграшу і програшу
             # lost.draw()
-            if level1_button.pressed:
+            if level_buttons[0].pressed:
                 start_game = False
                 level1 = True
-            elif level2_button.pressed:
+            elif level_buttons[1].pressed:
                 start_game = False
                 level2 = True
-            elif level3_button.pressed:
+            elif level_buttons[2].pressed:
                 start_game = False
                 level3 = True
-            elif level4_button.pressed:
+            elif level_buttons[3].pressed:
                 start_game = False
                 level4 = True
-            elif level5_button.pressed:
+            elif level_buttons[4].pressed:
                 start_game = False
                 level5 = True
             elif rules_button.pressed:

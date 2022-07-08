@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="all windows are set up">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="letter buttons rendering optimized">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/materials/words12" beforeDir="false" afterPath="$PROJECT_DIR$/materials/words12" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/materials/words5" beforeDir="false" afterPath="$PROJECT_DIR$/materials/words5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/materials/words8" beforeDir="false" afterPath="$PROJECT_DIR$/materials/words8" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +200,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1657029799030</updated>
-      <workItem from="1657275099801" duration="2630000" />
+      <workItem from="1657275099801" duration="3311000" />
     </task>
     <task id="LOCAL-00001" summary="start window, some buttons, started class for levels">
       <created>1657142336306</created>
@@ -242,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657235683779</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="letter buttons rendering optimized">
+      <created>1657279095803</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1657279095803</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,9 +273,10 @@
     <MESSAGE value="letter button(type2) is kinda setup" />
     <MESSAGE value="buttons are actually working now" />
     <MESSAGE value="all windows are set up" />
-    <option name="LAST_COMMIT_MESSAGE" value="all windows are set up" />
+    <MESSAGE value="letter buttons rendering optimized" />
+    <option name="LAST_COMMIT_MESSAGE" value="letter buttons rendering optimized" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/GameGarden$main.coverage" NAME="main Coverage Results" MODIFIED="1657278810987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GameGarden$main.coverage" NAME="main Coverage Results" MODIFIED="1657279497888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
