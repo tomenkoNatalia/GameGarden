@@ -130,7 +130,9 @@ class Word:
         # else:
         #     file = open('materials/words8.txt')
 
-        file = open('materials/wordsEnglish.txt')
+        # file = open('materials/wordsEnglish.txt')
+
+        file = open('materials/words8.txt', encoding="utf8")
         f = file.readlines()
         rand = random.randrange(0, len(f) - 1)
 
@@ -194,7 +196,7 @@ text_rules2 = font2.render("Тут щось буде \n тут щось буде
                            "#edeef3")
 # кнопки букви розташування
 letters = []
-alphabet = list("abcdefghijklmnopqrstuvwxyz'")
+alphabet = list("абвгґдеєжзиіїйклмнопрстуфхцчшщьюя")
 
 x_position = 710
 y_position = 100
@@ -203,12 +205,12 @@ for i in range(7):
     letters.append(Button(alphabet[i], 30, 40, x_position, y_position, 5, 2))
     letters.append(Button(alphabet[i+7], 30, 40, x_position, y_position + 50, 5, 2))
     letters.append(Button(alphabet[i+14], 30, 40, x_position, y_position + 100, 5, 2))
-    if i < 5:
-        letters.append(Button(alphabet[i+21], 30, 40, x_position, y_position + 150, 5, 2))
+    # if i < 5:
+    #     letters.append(Button(alphabet[i+21], 30, 40, x_position, y_position + 150, 5, 2))
 
-    # letters.append(Button(alphabet[i+21], 30, 40, x_position, y_position + 150, 5, 2))
-    # if i < 6:
-    #     letters.append(Button(alphabet[i+28], 30, 40, x_position, y_position + 200, 5, 2))
+    letters.append(Button(alphabet[i+21], 30, 40, x_position, y_position + 150, 5, 2))
+    if i < 5:
+        letters.append(Button(alphabet[i+28], 30, 40, x_position, y_position + 200, 5, 2))
     x_position += 40
 
 word = Word()
