@@ -1,5 +1,6 @@
 import pygame
 from sys import exit
+import random
 
 pygame.init()
 width = 1000
@@ -89,26 +90,57 @@ def redraw_window():
         letter.draw()
 
 
-class gameWindow:
+class GameWindow:
     def __init__(self, back, colorText, text, field, xtext, ytext, xfield, yfield, type=1):
-        self.back = back
-        self.text_surf = font1.render(text, True, colorText)
+        self.background = back
+        self.text = font1.render(text, True, colorText)
         self.text_rect = pygame.Rect(xtext, ytext, 100, 100)
         self.field = pygame.image.load(field)
         self.field_rect = pygame.Rect(xfield, yfield, 10, 300)
+        self.word = self.select_word()
+        self.guessed = []
+        self.spaced_word = font1.render(self.space_out_word(), True, "#FFFFFF")
+        self.word_rect = pygame.Rect(100, 400, 100, 100)
         self.type = type
 
     def draw(self):
-
-        screen.fill(self.back)
+        screen.fill(self.background)
         screen.blit(self.field, self.field_rect)
-        screen.blit(self.text_surf, self.text_rect)
+        screen.blit(self.text, self.text_rect)
+        screen.blit(self.spaced_word, self.word_rect)
         if self.type == 1:
             redraw_window()
             go_back_button.draw()
         if self.type == 2:
             play_again_button.draw()
             exit_button.draw()
+
+    def select_word(self):
+        # if self.text_surf == "Рівень 1":
+        #     file = open('materials/words5.txt')
+        # elif self.text_surf == "Рівень 4" or self.text_surf == "Рівень 5":
+        #     file = open('materials/words12.txt')
+        # else:
+        #     file = open('materials/words8.txt')
+        file = open('materials/wordsEnglish.txt')
+        f = file.readlines()
+        rand = random.randrange(0, len(f) - 1)
+
+        return f[rand][:-1]
+
+    def space_out_word(self):
+        spaced_word = ''
+        guessed_letters = [self.guessed]
+        for x in range(len(self.word)):
+            if self.word[x] != ' ':
+                spaced_word += '_ '
+                for i in range(len(guessed_letters)):
+                    if self.word[x].upper() == guessed_letters[i]:
+                        spaced_word = spaced_word[:-2]
+                        spaced_word += self.word[x].upper() + ' '
+            elif self.word[x] == ' ':
+                spaced_word += ' '
+        return spaced_word
 
         # додати метод який підключає рандомне слово, переводить кожен символ у - і виводить на екран
         # а потім якщо воно вгадується - конвертує - назад у букву, або якось інакше це зробити я хз
@@ -124,12 +156,6 @@ font3 = pygame.font.Font(newFont, 40)
 test_start_surface = pygame.image.load("materials/startpic.jpg")
 text_surface1 = font1.render("Вітаємо у словесному саду!", True, "#edeef3")
 text_surface2 = font3.render("Оберіть рівень складності гри", True, "#6d6875")
-# level1_button = Button('Рівень 1', 140, 60, 50, 300, 10, 1)
-# level2_button = Button('Рівень 2', 140, 60, 240, 300, 10, 1)
-# level3_button = Button('Рівень 3', 140, 60, 430, 300, 10, 1)
-# level4_button = Button('Рівень 4', 140, 60, 620, 300, 10, 1)
-# level5_button = Button('Рівень 5', 140, 60, 810, 300, 10, 1)
-# list of level buttons (1-5)
 level_buttons = list()
 level_buttons.append(Button('Рівень 1', 140, 60, 50, 300, 10, 1))
 level_buttons.append(Button('Рівень 2', 140, 60, 240, 300, 10, 1))
@@ -143,13 +169,13 @@ play_again_button = Button('Грати знову', 140, 50, 50, 400, 10, 1)
 exit_button = Button('Вийти з гри', 140, 50, 810, 400, 10, 1)
 
 # вікна на рівні
-lvl1 = gameWindow("#EAB595", "#79616F", "Рівень 1", "materials/lvl1.1.jpg", 350, 1, 30, 70, 1)
-lvl2 = gameWindow("#EAB595", "#79616F", "Рівень 2", "materials/lvl2.1.jpg", 350, 1, 30, 70, 1)
-lvl3 = gameWindow("#EAB595", "#79616F", "Рівень 3", "materials/lvl3.1.jpg", 350, 1, 30, 70, 1)
-lvl4 = gameWindow("#EAB595", "#79616F", "Рівень 4", "materials/lvl4.1.jpg", 350, 1, 30, 70, 1)
-lvl5 = gameWindow("#EAB595", "#79616F", "Рівень 5", "materials/lvl5.1.jpg", 350, 1, 30, 70, 1)
-lost1 = gameWindow("#EAB595", "#79616F", "О ні, ви програли((", "materials/lost1.jpg", 350, 1, 0, 0, 2)
-won1 = gameWindow("#EAB595", "#79616F", "Вітаю, ви виграли!", "materials/win1.jpg", 300, 1, 0, 0, 2)
+lvl1 = GameWindow("#EAB595", "#79616F", "Рівень 1", "materials/lvl1.1.jpg", 350, 1, 30, 70, 1)
+lvl2 = GameWindow("#EAB595", "#79616F", "Рівень 2", "materials/lvl2.1.jpg", 350, 1, 30, 70, 1)
+lvl3 = GameWindow("#EAB595", "#79616F", "Рівень 3", "materials/lvl3.1.jpg", 350, 1, 30, 70, 1)
+lvl4 = GameWindow("#EAB595", "#79616F", "Рівень 4", "materials/lvl4.1.jpg", 350, 1, 30, 70, 1)
+lvl5 = GameWindow("#EAB595", "#79616F", "Рівень 5", "materials/lvl5.1.jpg", 350, 1, 30, 70, 1)
+lost1 = GameWindow("#EAB595", "#79616F", "О ні, ви програли((", "materials/lost1.jpg", 350, 1, 0, 0, 2)
+won1 = GameWindow("#EAB595", "#79616F", "Вітаю, ви виграли!", "materials/win1.jpg", 300, 1, 0, 0, 2)
 # для правил
 text_rules1 = font1.render("Правила гри", True, "#edeef3")
 text_rules2 = font2.render("Тут щось буде \n тут щось буде \n тут багато чого буде \n  ураура правила клас", True,
