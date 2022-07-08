@@ -171,7 +171,7 @@ level_buttons.append(Button('Рівень 3', 140, 60, 430, 300, 10, 1))
 level_buttons.append(Button('Рівень 4', 140, 60, 620, 300, 10, 1))
 level_buttons.append(Button('Рівень 5', 140, 60, 810, 300, 10, 1))
 
-rules_button = Button('Правила гри', 200, 80, 700, 400, 10, 1)
+rules_button = Button('Правила гри', 200, 80, 400, 400, 10, 1)
 go_back_button = Button('Назад', 140, 50, 810, 400, 10, 1)
 play_again_button = Button('Грати знову', 140, 50, 50, 400, 10, 1)
 exit_button = Button('Вийти з гри', 140, 50, 810, 400, 10, 1)
@@ -214,6 +214,7 @@ def reset_window():
     rules_button.draw()
 
 
+
 # Сам процес гри
 # можливо його можна оптимізувати, але воно працює і так, і на цьому дякую
 while True:
@@ -251,18 +252,48 @@ while True:
 
         elif level1:
             lvl1.draw()
+            if go_back_button.pressed:
+                level1 = False
+                start_game = True
+                reset_window()
+                go_back_button.pressed = False
+                level_buttons[0].pressed = False
 
         elif level2:
             lvl2.draw()
+            if go_back_button.pressed:
+                level2 = False
+                start_game = True
+                reset_window()
+                go_back_button.pressed = False
+                level_buttons[1].pressed = False
 
         elif level3:
             lvl3.draw()
+            if go_back_button.pressed:
+                level3 = False
+                start_game = True
+                reset_window()
+                go_back_button.pressed = False
+                level_buttons[2].pressed = False
 
         elif level4:
             lvl4.draw()
+            if go_back_button.pressed:
+                level4 = False
+                start_game = True
+                reset_window()
+                go_back_button.pressed = False
+                level_buttons[3].pressed = False
 
         elif level5:
             lvl5.draw()
+            if go_back_button.pressed:
+                level5 = False
+                start_game = True
+                reset_window()
+                go_back_button.pressed = False
+                level_buttons[4].pressed = False
 
         elif lost:
             lost1.draw()
@@ -279,6 +310,7 @@ while True:
                 rules = False
                 start_game = True
                 reset_window()
+                rules_button.pressed = False
 
         pygame.display.update()
         clock.tick(60)
