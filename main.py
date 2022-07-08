@@ -204,6 +204,16 @@ for i in range(7):
         letters.append(Button(alphabet[i + 28], 30, 40, x_position, y_position + 200, 5, 2))
     x_position += 40
 
+
+def reset_window():
+    screen.blit(test_start_surface, (0, 0))
+    screen.blit(text_surface1, (200, 50))
+    screen.blit(text_surface2, (300, 200))
+    for level_button in level_buttons:
+        level_button.draw()
+    rules_button.draw()
+
+
 # Сам процес гри
 # можливо його можна оптимізувати, але воно працює і так, і на цьому дякую
 while True:
@@ -212,13 +222,7 @@ while True:
             pygame.quit()
             exit()
         if start_game:
-            screen.blit(test_start_surface, (0, 0))
-            screen.blit(text_surface1, (200, 50))
-            screen.blit(text_surface2, (300, 200))
-            for level_button in level_buttons:
-                level_button.draw()
-            rules_button.draw()
-
+            reset_window()
             # won.draw()  перевірка вікна виграшу і програшу
             # lost.draw()
             if level_buttons[0].pressed:
@@ -271,6 +275,10 @@ while True:
             screen.blit(text_rules1, (250, 10))
             screen.blit(text_rules2, (50, 80))
             go_back_button.draw()
+            if go_back_button.pressed:
+                rules = False
+                start_game = True
+                reset_window()
 
         pygame.display.update()
         clock.tick(60)
