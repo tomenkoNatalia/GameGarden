@@ -232,18 +232,18 @@ while True:
             elif level_buttons[2].pressed:
                 start_game = False
                 level3 = True
+                word = Word(3)
             elif level_buttons[3].pressed:
                 start_game = False
                 level4 = True
-                word = Word(3)
+                word = Word(4)
             elif level_buttons[4].pressed:
                 start_game = False
                 level5 = True
-                word = Word(4)
+                word = Word(5)
             elif rules_button.pressed:
                 start_game = False
                 rules = True
-                word = Word(5)
 
         elif level1:
             lvl1.draw()
