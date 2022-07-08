@@ -86,9 +86,6 @@ class Button:
                 self.top_color = '#475F77'
 
 
-# Метод який зв'яже кнопку зі словом
-
-
 class GameWindow:
     def __init__(self, back, colorText, text, field, xtext, ytext, xfield, yfield, type=1):
         self.background = back
@@ -110,16 +107,12 @@ class GameWindow:
             play_again_button.draw()
             exit_button.draw()
 
-        # додати метод який підключає рандомне слово, переводить кожен символ у - і виводить на екран
-        # а потім якщо воно вгадується - конвертує - назад у букву, або якось інакше це зробити я хз
-
 
 class Word:
     def __init__(self, level):
         self.level = level
         self.word = self.select_word()
         self.guessed = ''
-        # self.spaced_word = font1.render(self.space_out_word(), True, "#FFFFFF")
         self.word_rect = pygame.Rect(100, 400, 100, 100)
 
     def draw(self):
@@ -206,9 +199,6 @@ for i in range(7):
     letters.append(Button(alphabet[i], 30, 40, x_position, y_position, 5, 2))
     letters.append(Button(alphabet[i + 7], 30, 40, x_position, y_position + 50, 5, 2))
     letters.append(Button(alphabet[i + 14], 30, 40, x_position, y_position + 100, 5, 2))
-    # if i < 5:
-    #     letters.append(Button(alphabet[i+21], 30, 40, x_position, y_position + 150, 5, 2))
-
     letters.append(Button(alphabet[i + 21], 30, 40, x_position, y_position + 150, 5, 2))
     if i < 5:
         letters.append(Button(alphabet[i + 28], 30, 40, x_position, y_position + 200, 5, 2))
