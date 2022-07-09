@@ -181,7 +181,7 @@ for i in range(3):
     x += 270
 x = 40
 for i in range(2):
-    groupLvl5.add(Flowers(40+x, 120), Flowers(40 + x, 300), Flowers(580, 200))
+    groupLvl5.add(Flowers(40 + x, 120), Flowers(40 + x, 300), Flowers(580, 200))
     x += 270
 
 
@@ -201,11 +201,10 @@ test_start_surface = pygame.image.load("materials/startpic.jpg")
 text_surface1 = font1.render("Вітаємо у словесному саду!", True, "#edeef3")
 text_surface2 = font3.render("Оберіть рівень складності гри", True, "#6d6875")
 level_buttons = list()
-level_buttons.append(Button('Рівень 1', 140, 60, 50, 300, 10, 1))
-level_buttons.append(Button('Рівень 2', 140, 60, 240, 300, 10, 1))
-level_buttons.append(Button('Рівень 3', 140, 60, 430, 300, 10, 1))
-level_buttons.append(Button('Рівень 4', 140, 60, 620, 300, 10, 1))
-level_buttons.append(Button('Рівень 5', 140, 60, 810, 300, 10, 1))
+x = 50
+for i in range(5):
+    level_buttons.append(Button('Рівень ' + str(i+1), 140, 60, x, 300, 10, 1))
+    x += 190
 
 rules_button = Button('Правила гри', 200, 80, 400, 400, 10, 1)
 go_back_button = Button('Назад', 140, 50, 810, 400, 10, 1)
@@ -259,6 +258,7 @@ def reset_window():
         letter.pressed = False
         letter.dynamic_elevation = 10
         # повернути розмір кнопок
+
 
 # Сам процес гри
 while True:
