@@ -102,10 +102,11 @@ class GameWindow:
         if self.type == 1:
             redraw_window()
             go_back_button.draw()
-            word.draw()
+            word.draw_spaced()
         if self.type == 2:
             play_again_button.draw()
             exit_button.draw()
+            word.draw_full()
 
 
 class Word:
@@ -113,11 +114,15 @@ class Word:
         self.level = level
         self.word = self.select_word()
         self.guessed = ''
-        self.word_rect = pygame.Rect(100, 400, 100, 100)
+        self.spaced_word_rect = pygame.Rect(100, 400, 100, 100)
+        self.full_word_rect = pygame.Rect(200, 400, 100, 100)
         self.errors = 0
 
-    def draw(self):
-        screen.blit(font1.render(self.space_out_word(), True, "#FFFFFF"), self.word_rect)
+    def draw_spaced(self):
+        screen.blit(font1.render(self.space_out_word(), True, "#FFFFFF"), self.spaced_word_rect)
+
+    def draw_full(self):
+        screen.blit(font1.render('Слово раунду: ' + self.word, True, "#FFFFFF"), self.full_word_rect)
 
     def select_word(self):
         if self.level == 1:
@@ -162,7 +167,7 @@ font1 = pygame.font.Font(newFont, 60)
 font2 = pygame.font.Font(newFont, 30)
 font3 = pygame.font.Font(newFont, 40)
 
-# стартове вікно налаштування (по ідеї там якось можна кнопки об'єднати у групу щоб не виводити кожну окремо)
+# стартове вікно налаштування
 test_start_surface = pygame.image.load("materials/startpic.jpg")
 text_surface1 = font1.render("Вітаємо у словесному саду!", True, "#edeef3")
 text_surface2 = font3.render("Оберіть рівень складності гри", True, "#6d6875")
@@ -254,7 +259,7 @@ while True:
 
         elif level1:
             lvl1.draw()
-            if word.errors >= 10:
+            if word.errors >= 15:
                 level1 = False
                 lost = True
 
@@ -271,7 +276,7 @@ while True:
 
         elif level2:
             lvl2.draw()
-            if word.errors >= 10:
+            if word.errors >= 12:
                 level2 = False
                 lost = True
 
@@ -284,7 +289,7 @@ while True:
 
         elif level3:
             lvl3.draw()
-            if word.errors >= 7:
+            if word.errors >= 9:
                 level3 = False
                 lost = True
 
