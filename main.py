@@ -191,10 +191,16 @@ lvl4 = GameWindow("#EAB595", "#79616F", "Рівень 4", "materials/lvl4.1.jpg"
 lvl5 = GameWindow("#EAB595", "#79616F", "Рівень 5", "materials/lvl5.1.jpg", 350, 1, 30, 70, 1)
 lost1 = GameWindow("#EAB595", "#79616F", "О ні, ви програли((", "materials/lost1.jpg", 350, 1, 0, 0, 2)
 won1 = GameWindow("#EAB595", "#79616F", "Вітаю, ви виграли!", "materials/win1.jpg", 300, 1, 0, 0, 2)
+
 # для правил
 text_rules1 = font1.render("Правила гри", True, "#edeef3")
-text_rules2 = font2.render("Тут щось буде \n тут щось буде \n тут багато чого буде \n  ураура правила клас", True,
-                           "#edeef3")
+rules_array = open('materials/rules.txt', encoding="utf8").readlines()
+rules_text = ""
+for rule in rules_array:
+    rules_text += '\n' + rule
+text_rules2 = font2.render(rules_text, True, "#edeef3")
+# якось зробити перенос на інший рядок
+
 # кнопки букви розташування
 letter_buttons = []
 alphabet = list("абвгґдеєжзиіїйклмнопрстуфхцчшщьюя")
@@ -221,12 +227,12 @@ def reset_window():
     rules_button.draw()
     for letter in letter_buttons:
         letter.pressed = False
+        letter.dynamic_elevation = 10
         # повернути розмір кнопок
 
 
 
 # Сам процес гри
-# можливо його можна оптимізувати, але воно працює і так, і на цьому дякую
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -234,8 +240,6 @@ while True:
             exit()
         if start_game:
             reset_window()
-            # won.draw()  перевірка вікна виграшу і програшу
-            # lost.draw()
             if level_buttons[0].pressed:
                 start_game = False
                 level1 = True

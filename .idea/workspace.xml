@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="win/lose works properly">
+    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="buttons work in every round but don't pop back">
+      <change afterPath="$PROJECT_DIR$/materials/rules.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -201,7 +202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657355556151</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="buttons work in every round but don't pop back">
+      <created>1657358713783</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1657358713783</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,13 +251,14 @@
     <MESSAGE value="somehow navigation works" />
     <MESSAGE value="won/lost works but without navigation and right answer" />
     <MESSAGE value="you can see the right answer, but it doesn't quite fit" />
-    <option name="LAST_COMMIT_MESSAGE" value="you can see the right answer, but it doesn't quite fit" />
+    <MESSAGE value="buttons work in every round but don't pop back" />
+    <option name="LAST_COMMIT_MESSAGE" value="buttons work in every round but don't pop back" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/GameGarden$main.coverage" NAME="main Coverage Results" MODIFIED="1657358522510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GameGarden$main.coverage" NAME="main Coverage Results" MODIFIED="1657360774016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
