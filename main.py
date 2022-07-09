@@ -295,7 +295,6 @@ winMusic = pygame.mixer.Sound("materials/Sounds/win.wav")
 
 # Сам процес гри
 while True:
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
