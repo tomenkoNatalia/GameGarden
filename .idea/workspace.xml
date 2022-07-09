@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="buttons work in every round but don't pop back">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="added flowers + animation, it works kinda stupid">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flowers.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -311,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657358713783</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added flowers + animation, it works kinda stupid">
+      <created>1657374159468</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1657374159468</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -354,7 +359,8 @@
     <MESSAGE value="won/lost works but without navigation and right answer" />
     <MESSAGE value="you can see the right answer, but it doesn't quite fit" />
     <MESSAGE value="buttons work in every round but don't pop back" />
-    <option name="LAST_COMMIT_MESSAGE" value="buttons work in every round but don't pop back" />
+    <MESSAGE value="added flowers + animation, it works kinda stupid" />
+    <option name="LAST_COMMIT_MESSAGE" value="added flowers + animation, it works kinda stupid" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,6 +1,7 @@
 import pygame
 from sys import exit
 import random
+from flowers import Flowers
 
 pygame.init()
 width = 1000
@@ -87,13 +88,15 @@ class Button:
 
 
 class GameWindow:
-    def __init__(self, back, colorText, text, field, xtext, ytext, xfield, yfield, type=1):
+
+    def __init__(self, back, colorText, text, field, xtext, ytext, xfield, yfield, flowers, type=1):
         self.background = back
         self.text = font1.render(text, True, colorText)
         self.text_rect = pygame.Rect(xtext, ytext, 100, 100)
         self.field = pygame.image.load(field)
         self.field_rect = pygame.Rect(xfield, yfield, 10, 300)
         self.type = type
+        self.flowers = flowers
 
     def draw(self):
         screen.fill(self.background)
@@ -103,6 +106,7 @@ class GameWindow:
             redraw_window()
             go_back_button.draw()
             word.draw_spaced()
+            # drawflwrs()
         if self.type == 2:
             play_again_button.draw()
             exit_button.draw()
@@ -156,6 +160,13 @@ class Word:
             self.errors += 1
 
 
+group = pygame.sprite.Group()
+x = 40
+
+for i in range(5):
+    group.add(Flowers(40 + x, 120), Flowers(40 + x, 220),Flowers(40 + x, 320))
+    x += 120
+
 def redraw_window():
     for letter in letter_buttons:
         letter.draw()
@@ -184,11 +195,11 @@ play_again_button = Button('Грати знову', 140, 50, 50, 400, 10, 1)
 exit_button = Button('Вийти з гри', 140, 50, 810, 400, 10, 1)
 
 # вікна на рівні
-lvl1 = GameWindow("#EAB595", "#79616F", "Рівень 1", "materials/lvl1.1.jpg", 350, 1, 30, 70, 1)
-lvl2 = GameWindow("#EAB595", "#79616F", "Рівень 2", "materials/lvl2.1.jpg", 350, 1, 30, 70, 1)
-lvl3 = GameWindow("#EAB595", "#79616F", "Рівень 3", "materials/lvl3.1.jpg", 350, 1, 30, 70, 1)
-lvl4 = GameWindow("#EAB595", "#79616F", "Рівень 4", "materials/lvl4.1.jpg", 350, 1, 30, 70, 1)
-lvl5 = GameWindow("#EAB595", "#79616F", "Рівень 5", "materials/lvl5.1.jpg", 350, 1, 30, 70, 1)
+lvl1 = GameWindow("#EAB595", "#79616F", "Рівень 1", "materials/lvl1.1.jpg", 350, 1, 30, 70, 15, 1)
+lvl2 = GameWindow("#EAB595", "#79616F", "Рівень 2", "materials/lvl2.1.jpg", 350, 1, 30, 70, 12, 1)
+lvl3 = GameWindow("#EAB595", "#79616F", "Рівень 3", "materials/lvl3.1.jpg", 350, 1, 30, 70, 12, 1)
+lvl4 = GameWindow("#EAB595", "#79616F", "Рівень 4", "materials/lvl4.1.jpg", 350, 1, 30, 70, 10, 1)
+lvl5 = GameWindow("#EAB595", "#79616F", "Рівень 5", "materials/lvl5.1.jpg", 350, 1, 30, 70, 8, 1)
 lost1 = GameWindow("#EAB595", "#79616F", "О ні, ви програли((", "materials/lost1.jpg", 350, 1, 0, 0, 2)
 won1 = GameWindow("#EAB595", "#79616F", "Вітаю, ви виграли!", "materials/win1.jpg", 300, 1, 0, 0, 2)
 
@@ -231,34 +242,8 @@ def reset_window():
         # повернути розмір кнопок
 
 
-class Flowers(pygame.sprite.Sprite):
-    def __init__(self):
-        super().__init__()
-        flw1 = pygame.image.load("materials/flowerpos1.png").convert_alpha()
-        flw2 = pygame.image.load("materials/flowerpos2.png").convert_alpha()
-        flw3 = pygame.image.load("materials/flowerpos3.png").convert_alpha()
-        flw4 = pygame.image.load("materials/flowerpos4.png").convert_alpha()
-        self.flowerAnimation = [flw1, flw2, flw3, flw4]
-        self.flowerIndex = 0
-
-        self.image = self.flowerAnimation[self.flowerIndex]
-        self.rect = self.image.get_rect(center=(50, 100))
-
-    def animation(self):
-        self.flowerIndex += 0.2
-        if self.flowerIndex >= len(self.flowerAnimation):
-            self.flowerIndex = 0
-        self.image = self.flowerAnimation[int(self.flowerIndex)]
-
-    def update(self):
-        self.animation()
-
-    # метод що ця штука зникає
-    #
-
-
-flower = pygame.sprite.GroupSingle()
-flower.add(Flowers())
+# flower = pygame.sprite.GroupSingle()
+# flower.add(Flowers(10, 20))
 
 
 # Сам процес гри
@@ -295,8 +280,8 @@ while True:
 
         elif level1:
             lvl1.draw()
-            flower.draw(screen)
-            flower.update()
+            group.draw(screen)
+            group.update()
 
             level_buttons[0].pressed = False
             if word.errors >= 15:
