@@ -105,7 +105,6 @@ class GameWindow:
             redraw_window()
             go_back_button.draw()
             word.draw_spaced()
-            # drawflwrs()
         if self.type == 2:
             play_again_button.draw()
             exit_button.draw()
@@ -118,14 +117,14 @@ class Word:
         self.word = self.select_word()
         self.guessed = ''
         self.spaced_word_rect = pygame.Rect(100, 400, 100, 100)
-        self.full_word_rect = pygame.Rect(200, 400, 100, 100)
+        self.full_word_rect = pygame.Rect(300, 400, 100, 100)
         self.errors = 0
 
     def draw_spaced(self):
         screen.blit(font1.render(self.space_out_word(), True, "#FFFFFF"), self.spaced_word_rect)
 
     def draw_full(self):
-        screen.blit(font1.render('Слово раунду: ' + self.word, True, "#FFFFFF"), self.full_word_rect)
+        screen.blit(font3.render('Слово раунду: ' + self.word, True, "#FFFFFF"), self.full_word_rect)
 
     def select_word(self):
         if self.level == 1:
@@ -200,6 +199,8 @@ font3 = pygame.font.Font(newFont, 40)
 test_start_surface = pygame.image.load("materials/startpic.jpg")
 text_surface1 = font1.render("Вітаємо у словесному саду!", True, "#edeef3")
 text_surface2 = font3.render("Оберіть рівень складності гри", True, "#6d6875")
+
+# level buttons
 level_buttons = list()
 x = 50
 for i in range(5):

@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="added button exit on the start screen">
+    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="rewrote letter buttons">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -343,7 +344,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657379379450</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="rewrote letter buttons">
+      <created>1657379707095</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1657379707095</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,7 +399,8 @@
     <MESSAGE value="Added flowers to all levels" />
     <MESSAGE value="fixed exit window bug" />
     <MESSAGE value="added button exit on the start screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="added button exit on the start screen" />
+    <MESSAGE value="rewrote letter buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="rewrote letter buttons" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
