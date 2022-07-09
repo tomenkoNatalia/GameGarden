@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="rewrote letter buttons">
+    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="changed draw_full() a bit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/materials/flower.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -351,7 +352,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657379707095</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="changed draw_full() a bit">
+      <created>1657380733784</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1657380733784</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,7 +383,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="start window, some buttons, started class for levels" />
     <MESSAGE value="buttons work somehow but still have problems" />
     <MESSAGE value="letter button(type2) is kinda setup" />
     <MESSAGE value="buttons are actually working now" />
@@ -400,7 +407,8 @@
     <MESSAGE value="fixed exit window bug" />
     <MESSAGE value="added button exit on the start screen" />
     <MESSAGE value="rewrote letter buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="rewrote letter buttons" />
+    <MESSAGE value="changed draw_full() a bit" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed draw_full() a bit" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
