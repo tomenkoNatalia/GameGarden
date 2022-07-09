@@ -99,10 +99,10 @@ class GameWindow:
         screen.fill(self.background)
         screen.blit(self.field, self.field_rect)
         screen.blit(self.text, self.text_rect)
-        word.draw()
         if self.type == 1:
             redraw_window()
             go_back_button.draw()
+            word.draw()
         if self.type == 2:
             play_again_button.draw()
             exit_button.draw()
@@ -114,6 +114,7 @@ class Word:
         self.word = self.select_word()
         self.guessed = ''
         self.word_rect = pygame.Rect(100, 400, 100, 100)
+        self.errors = 0
 
     def draw(self):
         screen.blit(font1.render(self.space_out_word(), True, "#FFFFFF"), self.word_rect)
@@ -146,7 +147,8 @@ class Word:
                 contains = True
         if contains:
             self.guessed += letter
-            print(self.guessed)
+        else:
+            self.errors += 1
 
 
 def redraw_window():
@@ -252,6 +254,14 @@ while True:
 
         elif level1:
             lvl1.draw()
+            if word.errors >= 10:
+                level1 = False
+                lost = True
+
+            if '_' not in word.space_out_word():
+                level1 = False
+                won = True
+
             if go_back_button.pressed:
                 level1 = False
                 start_game = True
@@ -261,6 +271,10 @@ while True:
 
         elif level2:
             lvl2.draw()
+            if word.errors >= 10:
+                level2 = False
+                lost = True
+
             if go_back_button.pressed:
                 level2 = False
                 start_game = True
@@ -270,6 +284,10 @@ while True:
 
         elif level3:
             lvl3.draw()
+            if word.errors >= 7:
+                level3 = False
+                lost = True
+
             if go_back_button.pressed:
                 level3 = False
                 start_game = True
@@ -279,6 +297,10 @@ while True:
 
         elif level4:
             lvl4.draw()
+            if word.errors >= 7:
+                level4 = False
+                lost = True
+
             if go_back_button.pressed:
                 level4 = False
                 start_game = True
@@ -288,6 +310,10 @@ while True:
 
         elif level5:
             lvl5.draw()
+            if word.errors >= 5:
+                level5 = False
+                lost = True
+
             if go_back_button.pressed:
                 level5 = False
                 start_game = True
