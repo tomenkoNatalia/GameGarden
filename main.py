@@ -233,14 +233,28 @@ lvl5 = GameWindow("#EAB595", "#79616F", "Рівень 5", "materials/lvl5.1.jpg"
 lost1 = GameWindow("#EAB595", "#79616F", "О ні, ви програли((", "materials/lost1.jpg", 350, 1, 0, 0, 2)
 won1 = GameWindow("#EAB595", "#79616F", "Вітаю, ви виграли!", "materials/win1.jpg", 300, 1, 0, 0, 2)
 
-# для правил
+
+def blit_text(surface, text, pos, font):
+    global word_height
+    x, y = pos
+    space = font.size(' ')[0]  # The width of a space.
+    max_width, max_height = surface.get_size()
+    for line in text:
+        for word in line:
+            word_surface = font.render(word, True, "#edeef3").convert_alpha()
+            word_width, word_height = word_surface.get_size()
+            if x + word_width >= max_width:
+                x = pos[0]  # Reset the x.
+                y += word_height  # Start on new row.
+            surface.blit(word_surface, (x, y))
+            x += word_width + space
+        x = pos[0]  # Reset the x.
+        y += word_height  # Start on new row.
+
+
+text = open("materials/rules.txt", encoding="UTF8").readlines()
 text_rules1 = font1.render("Правила гри", True, "#edeef3")
-rules_array = open('materials/rules.txt', encoding="utf8").readlines()
-rules_text = ""
-for rule in rules_array:
-    rules_text += '\n' + rule
-text_rules2 = font2.render(rules_text, True, "#edeef3")
-# якось зробити перенос на інший рядок
+
 
 # кнопки букви розташування
 letter_buttons = []
@@ -437,7 +451,7 @@ while True:
         elif rules:
             screen.fill("#D87F81")
             screen.blit(text_rules1, (250, 10))
-            screen.blit(text_rules2, (50, 80))
+            blit_text(screen, text, (50, 100), font2)
             go_back_button.draw()
             if go_back_button.pressed:
                 rules = False
