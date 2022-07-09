@@ -157,7 +157,7 @@ class Word:
 
 
 def redraw_window():
-    for letter in letters:
+    for letter in letter_buttons:
         letter.draw()
 
 
@@ -196,19 +196,19 @@ text_rules1 = font1.render("Правила гри", True, "#edeef3")
 text_rules2 = font2.render("Тут щось буде \n тут щось буде \n тут багато чого буде \n  ураура правила клас", True,
                            "#edeef3")
 # кнопки букви розташування
-letters = []
+letter_buttons = []
 alphabet = list("абвгґдеєжзиіїйклмнопрстуфхцчшщьюя")
 
 x_position = 710
 y_position = 100
 
 for i in range(7):
-    letters.append(Button(alphabet[i], 30, 40, x_position, y_position, 5, 2))
-    letters.append(Button(alphabet[i + 7], 30, 40, x_position, y_position + 50, 5, 2))
-    letters.append(Button(alphabet[i + 14], 30, 40, x_position, y_position + 100, 5, 2))
-    letters.append(Button(alphabet[i + 21], 30, 40, x_position, y_position + 150, 5, 2))
+    letter_buttons.append(Button(alphabet[i], 30, 40, x_position, y_position, 5, 2))
+    letter_buttons.append(Button(alphabet[i + 7], 30, 40, x_position, y_position + 50, 5, 2))
+    letter_buttons.append(Button(alphabet[i + 14], 30, 40, x_position, y_position + 100, 5, 2))
+    letter_buttons.append(Button(alphabet[i + 21], 30, 40, x_position, y_position + 150, 5, 2))
     if i < 5:
-        letters.append(Button(alphabet[i + 28], 30, 40, x_position, y_position + 200, 5, 2))
+        letter_buttons.append(Button(alphabet[i + 28], 30, 40, x_position, y_position + 200, 5, 2))
     x_position += 40
 
 
@@ -219,6 +219,9 @@ def reset_window():
     for level_button in level_buttons:
         level_button.draw()
     rules_button.draw()
+    for letter in letter_buttons:
+        letter.pressed = False
+        # повернути розмір кнопок
 
 
 
@@ -259,6 +262,7 @@ while True:
 
         elif level1:
             lvl1.draw()
+            level_buttons[0].pressed = False
             if word.errors >= 15:
                 level1 = False
                 lost = True
@@ -272,10 +276,10 @@ while True:
                 start_game = True
                 reset_window()
                 go_back_button.pressed = False
-                level_buttons[0].pressed = False
 
         elif level2:
             lvl2.draw()
+            level_buttons[1].pressed = False
             if word.errors >= 12:
                 level2 = False
                 lost = True
@@ -289,10 +293,10 @@ while True:
                 start_game = True
                 reset_window()
                 go_back_button.pressed = False
-                level_buttons[1].pressed = False
 
         elif level3:
             lvl3.draw()
+            level_buttons[2].pressed = False
             if word.errors >= 9:
                 level3 = False
                 lost = True
@@ -306,10 +310,10 @@ while True:
                 start_game = True
                 reset_window()
                 go_back_button.pressed = False
-                level_buttons[2].pressed = False
 
         elif level4:
             lvl4.draw()
+            level_buttons[3].pressed = False
             if word.errors >= 7:
                 level4 = False
                 lost = True
@@ -323,10 +327,10 @@ while True:
                 start_game = True
                 reset_window()
                 go_back_button.pressed = False
-                level_buttons[3].pressed = False
 
         elif level5:
             lvl5.draw()
+            level_buttons[4].pressed = False
             if word.errors >= 5:
                 level5 = False
                 lost = True
@@ -340,13 +344,28 @@ while True:
                 start_game = True
                 reset_window()
                 go_back_button.pressed = False
-                level_buttons[4].pressed = False
 
         elif lost:
             lost1.draw()
+            if play_again_button.pressed:
+                lost = False
+                start_game = True
+                reset_window()
+                play_again_button.pressed = False
+            if exit_button.pressed:
+                pygame.quit()
+                exit()
 
         elif won:
             won1.draw()
+            if play_again_button.pressed:
+                won = False
+                start_game = True
+                reset_window()
+                play_again_button.pressed = False
+            if exit_button.pressed:
+                pygame.quit()
+                exit()
 
         elif rules:
             screen.fill("#D87F81")
