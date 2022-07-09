@@ -280,6 +280,10 @@ while True:
                 level2 = False
                 lost = True
 
+            if '_' not in word.space_out_word():
+                level2 = False
+                won = True
+
             if go_back_button.pressed:
                 level2 = False
                 start_game = True
@@ -292,6 +296,10 @@ while True:
             if word.errors >= 9:
                 level3 = False
                 lost = True
+
+            if '_' not in word.space_out_word():
+                level3 = False
+                won = True
 
             if go_back_button.pressed:
                 level3 = False
@@ -306,6 +314,10 @@ while True:
                 level4 = False
                 lost = True
 
+            if '_' not in word.space_out_word():
+                level4 = False
+                won = True
+
             if go_back_button.pressed:
                 level4 = False
                 start_game = True
@@ -318,6 +330,10 @@ while True:
             if word.errors >= 5:
                 level5 = False
                 lost = True
+
+            if '_' not in word.space_out_word():
+                level5 = False
+                won = True
 
             if go_back_button.pressed:
                 level5 = False
