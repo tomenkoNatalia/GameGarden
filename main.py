@@ -165,6 +165,7 @@ groupLvl3 = pygame.sprite.Group()
 groupLvl4 = pygame.sprite.Group()
 groupLvl5 = pygame.sprite.Group()
 
+# flowers setup
 x = 40
 for i in range(5):
     groupLvl1.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(40 + x, 320))
@@ -253,6 +254,7 @@ def reset_window():
     for level_button in level_buttons:
         level_button.draw()
     rules_button.draw()
+    exit_button.draw()
     for letter in letter_buttons:
         letter.pressed = False
         letter.dynamic_elevation = 10
@@ -289,6 +291,9 @@ while True:
             elif rules_button.pressed:
                 start_game = False
                 rules = True
+            elif exit_button.pressed:
+                pygame.quit()
+                exit()
 
         elif level1:
             lvl1.draw()
