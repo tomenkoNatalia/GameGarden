@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="all windows are set up" />
+    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="buttons work in every round but don't pop back">
+      <change afterPath="$PROJECT_DIR$/materials/rules.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,12 +35,16 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.language&quot;
   }
 }</component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="Game" />
+      <module name="GameGarden" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -47,6 +55,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -65,6 +74,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1657029799030</updated>
+      <workItem from="1657275099801" duration="14963000" />
     </task>
     <task id="LOCAL-00001" summary="start window, some buttons, started class for levels">
       <created>1657142336306</created>
@@ -101,8 +111,109 @@
       <option name="project" value="LOCAL" />
       <updated>1657235683779</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="letter buttons rendering optimized">
+      <created>1657279095803</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1657279095803</updated>
+    </task>
+    <task id="LOCAL-00007" summary="levels in one list">
+      <created>1657279829257</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1657279829257</updated>
+    </task>
+    <task id="LOCAL-00008" summary="displays dashes, only english words">
+      <created>1657287002356</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1657287002356</updated>
+    </task>
+    <task id="LOCAL-00009" summary="separate class for word">
+      <created>1657290006827</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1657290006827</updated>
+    </task>
+    <task id="LOCAL-00010" summary="displays 1 letter">
+      <created>1657291300630</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1657291300630</updated>
+    </task>
+    <task id="LOCAL-00011" summary="guessing letters works in english">
+      <created>1657292562682</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1657292562682</updated>
+    </task>
+    <task id="LOCAL-00012" summary="works in ukrainian">
+      <created>1657294021721</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1657294021721</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fixed the letter not showing problem(?)">
+      <created>1657304286770</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1657304286770</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fixed the letter not showing problem!">
+      <created>1657305048425</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1657305048425</updated>
+    </task>
+    <task id="LOCAL-00015" summary="you can go back from rules, but you can't view it again">
+      <created>1657306707915</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1657306707915</updated>
+    </task>
+    <task id="LOCAL-00016" summary="somehow navigation works">
+      <created>1657307982420</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1657307982420</updated>
+    </task>
+    <task id="LOCAL-00017" summary="won/lost works but without navigation and right answer">
+      <created>1657354439341</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1657354439341</updated>
+    </task>
+    <task id="LOCAL-00018" summary="you can see the right answer, but it doesn't quite fit">
+      <created>1657355556151</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1657355556151</updated>
+    </task>
+    <task id="LOCAL-00019" summary="buttons work in every round but don't pop back">
+      <created>1657358713783</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1657358713783</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -127,6 +238,27 @@
     <MESSAGE value="letter button(type2) is kinda setup" />
     <MESSAGE value="buttons are actually working now" />
     <MESSAGE value="all windows are set up" />
-    <option name="LAST_COMMIT_MESSAGE" value="all windows are set up" />
+    <MESSAGE value="letter buttons rendering optimized" />
+    <MESSAGE value="levels in one list" />
+    <MESSAGE value="displays dashes, only english words" />
+    <MESSAGE value="separate class for word" />
+    <MESSAGE value="displays 1 letter" />
+    <MESSAGE value="guessing letters works in english" />
+    <MESSAGE value="works in ukrainian" />
+    <MESSAGE value="fixed the letter not showing problem(?)" />
+    <MESSAGE value="fixed the letter not showing problem!" />
+    <MESSAGE value="you can go back from rules, but you can't view it again" />
+    <MESSAGE value="somehow navigation works" />
+    <MESSAGE value="won/lost works but without navigation and right answer" />
+    <MESSAGE value="you can see the right answer, but it doesn't quite fit" />
+    <MESSAGE value="buttons work in every round but don't pop back" />
+    <option name="LAST_COMMIT_MESSAGE" value="buttons work in every round but don't pop back" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/GameGarden$main.coverage" NAME="main Coverage Results" MODIFIED="1657360774016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
