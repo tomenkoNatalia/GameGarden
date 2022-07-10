@@ -227,11 +227,11 @@ play_again_button = Button('Грати знову', 140, 50, 810, 400, 10, 1)
 exit_button = Button('Вийти з гри', 140, 50, 50, 400, 10, 1)
 
 # вікна на рівні
-lvl1 = GameWindow("#EAB595", "#79616F", "Рівень 1", "materials/lvl1.1.jpg", 350, 1, 30, 70, 1)
+lvl1 = GameWindow("#AE6378", "#edeef3", "Рівень 1", "materials/lvl1.1.jpg", 350, 1, 30, 70, 1)
 lvl2 = GameWindow("#EAB595", "#79616F", "Рівень 2", "materials/lvl2.1.jpg", 350, 1, 30, 70, 1)
-lvl3 = GameWindow("#EAB595", "#79616F", "Рівень 3", "materials/lvl3.1.jpg", 350, 1, 30, 70, 1)
-lvl4 = GameWindow("#EAB595", "#79616F", "Рівень 4", "materials/lvl4.1.jpg", 350, 1, 30, 70, 1)
-lvl5 = GameWindow("#EAB595", "#79616F", "Рівень 5", "materials/lvl5.1.jpg", 350, 1, 30, 70, 1)
+lvl3 = GameWindow("#7E9680", "#F5CEC7", "Рівень 3", "materials/lvl3.1.jpg", 350, 1, 30, 70, 1)
+lvl4 = GameWindow("#B5838D", "#FFC98B", "Рівень 4", "materials/lvl4.1.jpg", 350, 1, 30, 70, 1)
+lvl5 = GameWindow("#D0637C", "#EAB595", "Рівень 5", "materials/lvl5.1.jpg", 350, 1, 30, 70, 1)
 lost1 = GameWindow("#EAB595", "#79616F", "О ні, ви вбили квіточки((", "materials/lost1.jpg", 250, 1, 0, 0, 2)
 won1 = GameWindow("#EAB595", "#79616F", "Вітаю, ви вберегли сад!", "materials/win1.jpg", 250, 1, 0, 0, 2)
 
