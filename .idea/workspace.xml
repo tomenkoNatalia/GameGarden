@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="added colours file">
+    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="added exit button again, should work okay">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colours.py" beforeDir="false" afterPath="$PROJECT_DIR$/colours.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/materials/rules.txt" beforeDir="false" afterPath="$PROJECT_DIR$/materials/rules.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -399,7 +402,21 @@
       <option name="project" value="LOCAL" />
       <updated>1657456459990</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="unnecessary comments deleted, formated file a bit">
+      <created>1657456839981</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1657456839981</updated>
+    </task>
+    <task id="LOCAL-00034" summary="added exit button again, should work okay">
+      <created>1657456951031</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1657456951031</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -423,8 +440,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="displays dashes, only english words" />
-    <MESSAGE value="separate class for word" />
     <MESSAGE value="displays 1 letter" />
     <MESSAGE value="guessing letters works in english" />
     <MESSAGE value="works in ukrainian" />
@@ -448,7 +463,9 @@
     <MESSAGE value="changed flowers again" />
     <MESSAGE value="changed level colours" />
     <MESSAGE value="added colours file" />
-    <option name="LAST_COMMIT_MESSAGE" value="added colours file" />
+    <MESSAGE value="unnecessary comments deleted, formated file a bit" />
+    <MESSAGE value="added exit button again, should work okay" />
+    <option name="LAST_COMMIT_MESSAGE" value="added exit button again, should work okay" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

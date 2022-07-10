@@ -208,7 +208,7 @@ def redraw_window():
 # стартове вікно налаштування
 test_start_surface = pygame.image.load("materials/startpic.jpg")
 text_surface1 = font1.render("Вітаємо у словесному саду!", True, c.milk)
-text_surface2 = font3.render("Оберіть рівень складності гри", True, c.darkViolet)
+text_surface2 = font3.render("Оберіть рівень складності гри", True, c.bordeaux)
 
 # level buttons
 level_buttons = list()
@@ -235,11 +235,11 @@ won1 = GameWindow(c.sandColour, c.darkViolet, "Вітаю, ви вберегли
 def blit_text(surface, text, pos, font):
     global word_height
     x, y = pos
-    space = font.size(' ')[0]  # The width of a space.
+    space = font.size(' ')[0]
     max_width, max_height = surface.get_size()
     for line in text:
         for word in line:
-            word_surface = font.render(word, True, c.milk).convert_alpha()
+            word_surface = font.render(word, True, c.bordeaux).convert_alpha()
             word_width, word_height = word_surface.get_size()
             if x + word_width >= max_width:
                 x = pos[0]
@@ -272,8 +272,8 @@ for i in range(7):
 
 def reset_window():
     screen.blit(test_start_surface, (0, 0))
-    screen.blit(text_surface1, (200, 50))
-    screen.blit(text_surface2, (300, 200))
+    screen.blit(text_surface1, (190, 50))
+    screen.blit(text_surface2, (250, 200))
     for level_button in level_buttons:
         level_button.draw()
     rules_button.draw()
@@ -327,8 +327,8 @@ while True:
                 start_game = False
                 rules = True
             elif exit_button.pressed:
-                 pygame.quit()
-                 exit()
+                pygame.quit()
+                exit()
 
         elif level1:
             lvl1.draw()
@@ -455,8 +455,8 @@ while True:
 
         elif rules:
             screen.fill(c.lightPink)
-            screen.blit(text_rules1, (250, 10))
-            blit_text(screen, text, (50, 100), font2)
+            screen.blit(text_rules1, (300, 10))
+            blit_text(screen, text, (40, 90), font2)
             go_back_button.draw()
             if go_back_button.pressed:
                 rules = False

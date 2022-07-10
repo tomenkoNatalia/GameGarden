@@ -12,3 +12,4 @@ white = "#FFFFFF"
 blue = '#475F77'
 darkBlue = '#354B5E'
 coral = '#D74B4B'
+bordeaux = "#6d071a"
