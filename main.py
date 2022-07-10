@@ -2,12 +2,14 @@ import pygame
 from sys import exit
 import random
 from flowers import Flowers
+import colours as c
 
 pygame.init()
 width = 1000
 height = 500
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Словесний сад")
+pygame.display.set_icon(pygame.image.load('materials/flowerpos1.png'))
 clock = pygame.time.Clock()
 start_game = True
 level1 = False
@@ -19,31 +21,32 @@ lost = False
 won = False
 rules = False
 
+newFont = "materials/Adigiana_Extreme.ttf"
+font1 = pygame.font.Font(newFont, 60)
+font2 = pygame.font.Font(newFont, 30)
+font3 = pygame.font.Font(newFont, 40)
+
 
 class Button:
-    def __init__(self, button_text, button_width, button_height, button_x, button_y, elevation, button_type=1):
-        # Core attributes
-        self.clickSound = None
-        self.letter = button_text
-        self.type = button_type
+    def __init__(self, text_button, width_button, height_button, button_x, button_y, elevation, type_button=1):
+
+        self.letter = text_button
+        self.type = type_button
         self.pressed = False
         self.elevation = elevation
         self.dynamic_elevation = elevation
         self.original_y_pos = button_y
         self.original_x_pos = button_x
+        self.top_rect = pygame.Rect(button_x, button_y, width_button, height_button)
+        self.top_color = c.blue
 
-        self.top_rect = pygame.Rect(button_x, button_y, button_width, button_height)
-        self.top_color = '#475F77'
-
-        # bottom rectangle
-        self.bottom_rect = pygame.Rect(button_x, button_y, button_width, button_height)
-        self.bottom_color = '#354B5E'
-        # text
-        self.text_surf = font2.render(button_text, True, '#FFFFFF')
+        self.bottom_rect = pygame.Rect(button_x, button_y, width_button, height_button)
+        self.bottom_color = c.darkBlue
+        # textx
+        self.text_surf = font2.render(text_button, True, c.white)
         self.text_rect = self.text_surf.get_rect(center=self.top_rect.center)
 
     def draw(self):
-        # elevation logic
         self.top_rect.y = self.original_y_pos - self.dynamic_elevation
         self.text_rect.center = self.top_rect.center
         self.clickSound = pygame.mixer.Sound("materials/Sounds/anyButton.wav")
@@ -59,7 +62,7 @@ class Button:
         mouse_pos = pygame.mouse.get_pos()
         if self.type == 1:
             if self.top_rect.collidepoint(mouse_pos):
-                self.top_color = '#D74B4B'
+                self.top_color = c.coral
                 if pygame.mouse.get_pressed()[0]:
                     self.clickSound.play()
                     self.dynamic_elevation = 0
@@ -69,14 +72,14 @@ class Button:
 
             else:
                 self.dynamic_elevation = self.elevation
-                self.top_color = '#475F77'
+                self.top_color = c.blue
 
         if self.type == 2:
             if self.top_rect.collidepoint(mouse_pos):
-                self.top_color = '#475F77'
+                self.top_color = c.blue
                 if pygame.mouse.get_pressed()[0]:
                     self.dynamic_elevation = 0
-                    self.top_color = '#D74B4B'
+                    self.top_color = c.coral
                     self.pressed = True
                     word.check_letter(self.letter)
                 else:
@@ -85,9 +88,9 @@ class Button:
                     self.dynamic_elevation = self.dynamic_elevation
 
                 else:
-                    self.top_color = '#D74B4B'
+                    self.top_color = c.coral
             else:
-                self.top_color = '#475F77'
+                self.top_color = c.blue
 
 
 class GameWindow:
@@ -99,10 +102,6 @@ class GameWindow:
         self.field = pygame.image.load(field)
         self.field_rect = pygame.Rect(xfield, yfield, 10, 300)
         self.type = type_gw
-        # self.loseMusic = pygame.mixer.Sound("materials/Sounds/lose.wav")
-        # self.winMusic = pygame.mixer.Sound("materials/Sounds/win.wav")
-
-    # anytime I try implement these sounds they run continuously, no idea how to fix
 
     def draw(self):
 
@@ -133,10 +132,10 @@ class Word:
         self.correctSound.set_volume(0.3)
 
     def draw_spaced(self):
-        screen.blit(font1.render(self.space_out_word(), True, "#FFFFFF"), self.spaced_word_rect)
+        screen.blit(font1.render(self.space_out_word(), True, c.white), self.spaced_word_rect)
 
     def draw_full(self):
-        screen.blit(font3.render('Слово раунду: ' + self.word, True, "#FFFFFF"), self.full_word_rect)
+        screen.blit(font3.render('Слово раунду: ' + self.word, True, c.white), self.full_word_rect)
 
     def select_word(self):
         if self.level == 1:
@@ -178,27 +177,27 @@ flowers_group = pygame.sprite.Group()
 
 
 def set_flowers(level):
-    x_flower = 40
+    x_flowers = 40
     if level == 1:
-        for i_flower in range(5):
-            flowers_group.add(Flowers(40 + x_flower, 120), Flowers(40 + x_flower, 220), Flowers(40 + x_flower, 320))
-            x_flower += 120
+        for i_flowers in range(5):
+            flowers_group.add(Flowers(40 + x_flowers, 120), Flowers(40 + x_flowers, 220), Flowers(40 + x_flowers, 320))
+            x_flowers += 140
     if level == 2:
-        for i_flower in range(4):
-            flowers_group.add(Flowers(40 + x_flower, 120), Flowers(40 + x_flower, 220), Flowers(40 + x_flower, 320))
-            x_flower += 180
+        for i_flowers in range(4):
+            flowers_group.add(Flowers(40 + x_flowers, 120), Flowers(40 + x_flowers, 220), Flowers(40 + x_flowers, 320))
+            x_flowers += 180
     if level == 3:
-        for i_flower in range(3):
-            flowers_group.add(Flowers(40 + x_flower, 120), Flowers(40 + x_flower, 220), Flowers(40 + x_flower, 320))
-            x_flower += 270
+        for i_flowers in range(5):
+            flowers_group.add(Flowers(40 + x_flowers, 120), Flowers(40 + x_flowers, 300))
+            x_flowers += 140
     if level == 4:
-        for i_flower in range(4):
-            flowers_group.add(Flowers(40 + x_flower, 120), Flowers(40 + x_flower, 300))
-            x_flower += 150
+        for i_flowers in range(4):
+            flowers_group.add(Flowers(40 + x_flowers, 120), Flowers(40 + x_flowers, 300))
+            x_flowers += 180
     if level == 5:
-        for i_flower in range(2):
-            flowers_group.add(Flowers(40 + x_flower, 120), Flowers(40 + x_flower, 300), Flowers(40 + x_flower, 200))
-            x_flower += 270
+        for i_flowers in range(3):
+            flowers_group.add(Flowers(40 + x_flowers, 120), Flowers(40 + x_flowers, 300))
+            x_flowers += 270
 
 
 def redraw_window():
@@ -206,23 +205,17 @@ def redraw_window():
         letter.draw()
 
 
-# шрифти налаштування
-newFont = "materials/Adigiana_Extreme.ttf"
-font1 = pygame.font.Font(newFont, 60)
-font2 = pygame.font.Font(newFont, 30)
-font3 = pygame.font.Font(newFont, 40)
-
 # стартове вікно налаштування
 test_start_surface = pygame.image.load("materials/startpic.jpg")
-text_surface1 = font1.render("Вітаємо у словесному саду!", True, "#edeef3")
-text_surface2 = font3.render("Оберіть рівень складності гри", True, "#6d6875")
+text_surface1 = font1.render("Вітаємо у словесному саду!", True, c.milk)
+text_surface2 = font3.render("Оберіть рівень складності гри", True, c.bordeaux)
 
 # level buttons
 level_buttons = list()
-x = 50
+x_lb = 50
 for i in range(5):
-    level_buttons.append(Button('Рівень ' + str(i + 1), 140, 60, x, 300, 10, 1))
-    x += 190
+    level_buttons.append(Button('Рівень ' + str(i + 1), 140, 60, x_lb, 300, 10, 1))
+    x_lb += 190
 
 rules_button = Button('Правила гри', 200, 80, 400, 400, 10, 1)
 go_back_button = Button('Назад', 140, 50, 810, 400, 10, 1)
@@ -230,35 +223,35 @@ play_again_button = Button('Грати знову', 140, 50, 810, 400, 10, 1)
 exit_button = Button('Вийти з гри', 140, 50, 50, 400, 10, 1)
 
 # вікна на рівні
-lvl1 = GameWindow("#EAB595", "#79616F", "Рівень 1", "materials/lvl1.1.jpg", 350, 1, 30, 70, 1)
-lvl2 = GameWindow("#EAB595", "#79616F", "Рівень 2", "materials/lvl2.1.jpg", 350, 1, 30, 70, 1)
-lvl3 = GameWindow("#EAB595", "#79616F", "Рівень 3", "materials/lvl3.1.jpg", 350, 1, 30, 70, 1)
-lvl4 = GameWindow("#EAB595", "#79616F", "Рівень 4", "materials/lvl4.1.jpg", 350, 1, 30, 70, 1)
-lvl5 = GameWindow("#EAB595", "#79616F", "Рівень 5", "materials/lvl5.1.jpg", 350, 1, 30, 70, 1)
-lost1 = GameWindow("#EAB595", "#79616F", "О ні, ви вбили квіточки((", "materials/lost1.jpg", 250, 1, 0, 0, 2)
-won1 = GameWindow("#EAB595", "#79616F", "Вітаю, ви вберегли сад!", "materials/win1.jpg", 250, 1, 0, 0, 2)
+lvl1 = GameWindow(c.violet, c.milk, "Рівень 1", "materials/lvl1.1.jpg", 350, 1, 30, 70, 1)
+lvl2 = GameWindow(c.sandColour, c.darkViolet, "Рівень 2", "materials/lvl2.1.jpg", 350, 1, 30, 70, 1)
+lvl3 = GameWindow(c.lightGreen, c.milkPink, "Рівень 3", "materials/lvl3.1.jpg", 350, 1, 30, 70, 1)
+lvl4 = GameWindow(c.lightViolet, c.lightOrange, "Рівень 4", "materials/lvl4.1.jpg", 350, 1, 30, 70, 1)
+lvl5 = GameWindow(c.strikingPink, c.sandColour, "Рівень 5", "materials/lvl5.1.jpg", 350, 1, 30, 70, 1)
+lost1 = GameWindow(c.sandColour, c.darkViolet, "О ні, ви вбили квіточки((", "materials/lost1.jpg", 250, 1, 0, 0, 2)
+won1 = GameWindow(c.sandColour, c.darkViolet, "Вітаю, ви вберегли сад!", "materials/win1.jpg", 250, 1, 0, 0, 2)
 
 
 def blit_text(surface, text, pos, font):
     global word_height
-    x_idk, y = pos
-    space = font.size(' ')[0]  # The width of a space.
+    x, y = pos
+    space = font.size(' ')[0]
     max_width, max_height = surface.get_size()
     for line in text:
         for word_idk in line:
-            word_surface = font.render(word_idk, True, "#edeef3").convert_alpha()
+            word_surface = font.render(word_idk, True, c.bordeaux).convert_alpha()
             word_width, word_height = word_surface.get_size()
-            if x_idk + word_width >= max_width:
-                x_idk = pos[0]  # Reset the x.
-                y += word_height  # Start on new row.
-            surface.blit(word_surface, (x_idk, y))
-            x_idk += word_width + space
-        x_idk = pos[0]  # Reset the x.
-        y += word_height  # Start on new row.
+            if x + word_width >= max_width:
+                x = pos[0]
+                y += word_height
+            surface.blit(word_surface, (x, y))
+            x += word_width + space
+        x = pos[0]
+        y += word_height
 
 
 text = open("materials/rules.txt", encoding="UTF8").readlines()
-text_rules1 = font1.render("Правила гри", True, "#edeef3")
+text_rules1 = font1.render("Правила гри", True, c.milk)
 
 # кнопки букви розташування
 letter_buttons = []
@@ -279,8 +272,8 @@ for i in range(7):
 
 def reset_window():
     screen.blit(test_start_surface, (0, 0))
-    screen.blit(text_surface1, (200, 50))
-    screen.blit(text_surface2, (300, 200))
+    screen.blit(text_surface1, (190, 50))
+    screen.blit(text_surface2, (250, 200))
     for level_button in level_buttons:
         level_button.draw()
     rules_button.draw()
@@ -380,7 +373,7 @@ while True:
             flowers_group.update()
 
             level_buttons[2].pressed = False
-            if word.errors >= 9:
+            if word.errors >= 10:
                 level3 = False
                 lost = True
 
@@ -458,9 +451,9 @@ while True:
                 exit()
 
         elif rules:
-            screen.fill("#D87F81")
-            screen.blit(text_rules1, (250, 10))
-            blit_text(screen, text, (50, 100), font2)
+            screen.fill(c.lightPink)
+            screen.blit(text_rules1, (300, 10))
+            blit_text(screen, text, (40, 90), font2)
             go_back_button.draw()
             if go_back_button.pressed:
                 rules = False
