@@ -21,24 +21,25 @@ rules = False
 
 
 class Button:
-    def __init__(self, text, width, height, x, y, elevation, type=1):
+    def __init__(self, button_text, button_width, button_height, button_x, button_y, elevation, button_type=1):
         # Core attributes
-        self.letter = text
-        self.type = type
+        self.clickSound = None
+        self.letter = button_text
+        self.type = button_type
         self.pressed = False
         self.elevation = elevation
         self.dynamic_elevation = elevation
-        self.original_y_pos = y
-        self.original_x_pos = x
+        self.original_y_pos = button_y
+        self.original_x_pos = button_x
 
-        self.top_rect = pygame.Rect(x, y, width, height)
+        self.top_rect = pygame.Rect(button_x, button_y, button_width, button_height)
         self.top_color = '#475F77'
 
         # bottom rectangle
-        self.bottom_rect = pygame.Rect(x, y, width, height)
+        self.bottom_rect = pygame.Rect(button_x, button_y, button_width, button_height)
         self.bottom_color = '#354B5E'
         # text
-        self.text_surf = font2.render(text, True, '#FFFFFF')
+        self.text_surf = font2.render(button_text, True, '#FFFFFF')
         self.text_rect = self.text_surf.get_rect(center=self.top_rect.center)
 
     def draw(self):
@@ -91,16 +92,17 @@ class Button:
 
 class GameWindow:
 
-    def __init__(self, back, colorText, text, field, xtext, ytext, xfield, yfield, type=1):
+    def __init__(self, back, text_color_gw, text_gw, field, xtext, ytext, xfield, yfield, type_gw=1):
         self.background = back
-        self.text = font1.render(text, True, colorText)
+        self.text = font1.render(text_gw, True, text_color_gw)
         self.text_rect = pygame.Rect(xtext, ytext, 100, 100)
         self.field = pygame.image.load(field)
         self.field_rect = pygame.Rect(xfield, yfield, 10, 300)
-        self.type = type
+        self.type = type_gw
         # self.loseMusic = pygame.mixer.Sound("materials/Sounds/lose.wav")
         # self.winMusic = pygame.mixer.Sound("materials/Sounds/win.wav")
- # anytime I try implement these sounds they run continuously, no idea how to fix
+
+    # anytime I try implement these sounds they run continuously, no idea how to fix
 
     def draw(self):
 
@@ -115,6 +117,7 @@ class GameWindow:
             play_again_button.draw()
             exit_button.draw()
             word.draw_full()
+
 
 class Word:
     def __init__(self, level):
@@ -159,8 +162,8 @@ class Word:
 
     def check_letter(self, letter):
         contains = False
-        for x in self.word:
-            if x == letter:
+        for l in self.word:
+            if l == letter:
                 contains = True
         if contains:
             self.guessed += letter
@@ -175,27 +178,27 @@ flowers_group = pygame.sprite.Group()
 
 
 def set_flowers(level):
-    x = 40
+    x_flower = 40
     if level == 1:
-        for i in range(5):
-            flowers_group.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(40 + x, 320))
-            x += 120
+        for i_flower in range(5):
+            flowers_group.add(Flowers(40 + x_flower, 120), Flowers(40 + x_flower, 220), Flowers(40 + x_flower, 320))
+            x_flower += 120
     if level == 2:
-        for i in range(4):
-            flowers_group.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(40 + x, 320))
-            x += 180
+        for i_flower in range(4):
+            flowers_group.add(Flowers(40 + x_flower, 120), Flowers(40 + x_flower, 220), Flowers(40 + x_flower, 320))
+            x_flower += 180
     if level == 3:
-        for i in range(3):
-            flowers_group.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(40 + x, 320))
-            x += 270
+        for i_flower in range(3):
+            flowers_group.add(Flowers(40 + x_flower, 120), Flowers(40 + x_flower, 220), Flowers(40 + x_flower, 320))
+            x_flower += 270
     if level == 4:
-        for i in range(4):
-            flowers_group.add(Flowers(40 + x, 120), Flowers(40 + x, 300))
-            x += 150
+        for i_flower in range(4):
+            flowers_group.add(Flowers(40 + x_flower, 120), Flowers(40 + x_flower, 300))
+            x_flower += 150
     if level == 5:
-        for i in range(2):
-            flowers_group.add(Flowers(40 + x, 120), Flowers(40 + x, 300), Flowers(40 + x, 200))
-            x += 270
+        for i_flower in range(2):
+            flowers_group.add(Flowers(40 + x_flower, 120), Flowers(40 + x_flower, 300), Flowers(40 + x_flower, 200))
+            x_flower += 270
 
 
 def redraw_window():
@@ -238,25 +241,24 @@ won1 = GameWindow("#EAB595", "#79616F", "Вітаю, ви вберегли са�
 
 def blit_text(surface, text, pos, font):
     global word_height
-    x, y = pos
+    x_idk, y = pos
     space = font.size(' ')[0]  # The width of a space.
     max_width, max_height = surface.get_size()
     for line in text:
-        for word in line:
-            word_surface = font.render(word, True, "#edeef3").convert_alpha()
+        for word_idk in line:
+            word_surface = font.render(word_idk, True, "#edeef3").convert_alpha()
             word_width, word_height = word_surface.get_size()
-            if x + word_width >= max_width:
-                x = pos[0]  # Reset the x.
+            if x_idk + word_width >= max_width:
+                x_idk = pos[0]  # Reset the x.
                 y += word_height  # Start on new row.
-            surface.blit(word_surface, (x, y))
-            x += word_width + space
-        x = pos[0]  # Reset the x.
+            surface.blit(word_surface, (x_idk, y))
+            x_idk += word_width + space
+        x_idk = pos[0]  # Reset the x.
         y += word_height  # Start on new row.
 
 
 text = open("materials/rules.txt", encoding="UTF8").readlines()
 text_rules1 = font1.render("Правила гри", True, "#edeef3")
-
 
 # кнопки букви розташування
 letter_buttons = []
@@ -273,8 +275,6 @@ for i in range(7):
     if i < 5:
         letter_buttons.append(Button(alphabet[i + 28], 30, 40, x_position, y_position + 200, 5, 2))
     x_position += 40
-
-
 
 
 def reset_window():
@@ -333,9 +333,6 @@ while True:
             elif rules_button.pressed:
                 start_game = False
                 rules = True
-            # elif exit_button.pressed:
-            #     pygame.quit()
-            #     exit()
 
         elif level1:
             lvl1.draw()
