@@ -45,6 +45,7 @@ class Button:
         # elevation logic
         self.top_rect.y = self.original_y_pos - self.dynamic_elevation
         self.text_rect.center = self.top_rect.center
+        self.clickSound = pygame.mixer.Sound("materials/Sounds/anyButton.wav")
 
         self.bottom_rect.midtop = self.top_rect.midtop
         self.bottom_rect.height = self.top_rect.height + self.dynamic_elevation
@@ -59,6 +60,7 @@ class Button:
             if self.top_rect.collidepoint(mouse_pos):
                 self.top_color = '#D74B4B'
                 if pygame.mouse.get_pressed()[0]:
+                    self.clickSound.play()
                     self.dynamic_elevation = 0
                     self.pressed = True
                 else:
@@ -96,8 +98,12 @@ class GameWindow:
         self.field = pygame.image.load(field)
         self.field_rect = pygame.Rect(xfield, yfield, 10, 300)
         self.type = type
+        # self.loseMusic = pygame.mixer.Sound("materials/Sounds/lose.wav")
+        # self.winMusic = pygame.mixer.Sound("materials/Sounds/win.wav")
+ # anytime I try implement these sounds they run continuously, no idea how to fix
 
     def draw(self):
+
         screen.fill(self.background)
         screen.blit(self.field, self.field_rect)
         screen.blit(self.text, self.text_rect)
@@ -110,7 +116,6 @@ class GameWindow:
             exit_button.draw()
             word.draw_full()
 
-
 class Word:
     def __init__(self, level):
         self.level = level
@@ -119,6 +124,10 @@ class Word:
         self.spaced_word_rect = pygame.Rect(100, 400, 100, 100)
         self.full_word_rect = pygame.Rect(300, 400, 100, 100)
         self.errors = 0
+        self.wrongSound = pygame.mixer.Sound("materials/Sounds/wrongButton.wav")
+        self.wrongSound.set_volume(0.3)
+        self.correctSound = pygame.mixer.Sound("materials/Sounds/correctButton.wav")
+        self.correctSound.set_volume(0.3)
 
     def draw_spaced(self):
         screen.blit(font1.render(self.space_out_word(), True, "#FFFFFF"), self.spaced_word_rect)
@@ -143,6 +152,7 @@ class Word:
         for letter in self.word:
             if letter in self.guessed:
                 spaced_word += letter + ' '
+
             else:
                 spaced_word += '_ '
         return spaced_word
@@ -154,8 +164,10 @@ class Word:
                 contains = True
         if contains:
             self.guessed += letter
+            self.correctSound.play()
         else:
             self.errors += 1
+            self.wrongSound.play()
 
 
 groupLvl1 = pygame.sprite.Group()
@@ -204,13 +216,13 @@ text_surface2 = font3.render("Оберіть рівень складності �
 level_buttons = list()
 x = 50
 for i in range(5):
-    level_buttons.append(Button('Рівень ' + str(i+1), 140, 60, x, 300, 10, 1))
+    level_buttons.append(Button('Рівень ' + str(i + 1), 140, 60, x, 300, 10, 1))
     x += 190
 
 rules_button = Button('Правила гри', 200, 80, 400, 400, 10, 1)
 go_back_button = Button('Назад', 140, 50, 810, 400, 10, 1)
-play_again_button = Button('Грати знову', 140, 50, 50, 400, 10, 1)
-exit_button = Button('Вийти з гри', 140, 50, 810, 400, 10, 1)
+play_again_button = Button('Грати знову', 140, 50, 810, 400, 10, 1)
+exit_button = Button('Вийти з гри', 140, 50, 50, 400, 10, 1)
 
 # вікна на рівні
 lvl1 = GameWindow("#EAB595", "#79616F", "Рівень 1", "materials/lvl1.1.jpg", 350, 1, 30, 70, 1)
@@ -221,14 +233,28 @@ lvl5 = GameWindow("#EAB595", "#79616F", "Рівень 5", "materials/lvl5.1.jpg"
 lost1 = GameWindow("#EAB595", "#79616F", "О ні, ви програли((", "materials/lost1.jpg", 350, 1, 0, 0, 2)
 won1 = GameWindow("#EAB595", "#79616F", "Вітаю, ви виграли!", "materials/win1.jpg", 300, 1, 0, 0, 2)
 
-# для правил
+
+def blit_text(surface, text, pos, font):
+    global word_height
+    x, y = pos
+    space = font.size(' ')[0]  # The width of a space.
+    max_width, max_height = surface.get_size()
+    for line in text:
+        for word in line:
+            word_surface = font.render(word, True, "#edeef3").convert_alpha()
+            word_width, word_height = word_surface.get_size()
+            if x + word_width >= max_width:
+                x = pos[0]  # Reset the x.
+                y += word_height  # Start on new row.
+            surface.blit(word_surface, (x, y))
+            x += word_width + space
+        x = pos[0]  # Reset the x.
+        y += word_height  # Start on new row.
+
+
+text = open("materials/rules.txt", encoding="UTF8").readlines()
 text_rules1 = font1.render("Правила гри", True, "#edeef3")
-rules_array = open('materials/rules.txt', encoding="utf8").readlines()
-rules_text = ""
-for rule in rules_array:
-    rules_text += '\n' + rule
-text_rules2 = font2.render(rules_text, True, "#edeef3")
-# якось зробити перенос на інший рядок
+
 
 # кнопки букви розташування
 letter_buttons = []
@@ -260,6 +286,12 @@ def reset_window():
         letter.dynamic_elevation = 10
         # повернути розмір кнопок
 
+
+backMusic = pygame.mixer.Sound("materials/Sounds/backmusic.wav")
+backMusic.play(loops=-1)
+backMusic.set_volume(0.3)
+loseMusic = pygame.mixer.Sound("materials/Sounds/lose.wav")
+winMusic = pygame.mixer.Sound("materials/Sounds/win.wav")
 
 # Сам процес гри
 while True:
@@ -393,6 +425,7 @@ while True:
                 go_back_button.pressed = False
 
         elif lost:
+
             lost1.draw()
             if play_again_button.pressed:
                 lost = False
@@ -417,7 +450,7 @@ while True:
         elif rules:
             screen.fill("#D87F81")
             screen.blit(text_rules1, (250, 10))
-            screen.blit(text_rules2, (50, 80))
+            blit_text(screen, text, (50, 100), font2)
             go_back_button.draw()
             if go_back_button.pressed:
                 rules = False
