@@ -2,6 +2,7 @@ import pygame
 from sys import exit
 import random
 from flowers import Flowers
+import colours as c
 
 pygame.init()
 width = 1000
@@ -19,6 +20,10 @@ lost = False
 won = False
 rules = False
 
+newFont = "materials/Adigiana_Extreme.ttf"
+font1 = pygame.font.Font(newFont, 60)
+font2 = pygame.font.Font(newFont, 30)
+font3 = pygame.font.Font(newFont, 40)
 
 class Button:
     def __init__(self, text, width, height, x, y, elevation, type=1):
@@ -32,13 +37,13 @@ class Button:
         self.original_x_pos = x
 
         self.top_rect = pygame.Rect(x, y, width, height)
-        self.top_color = '#475F77'
+        self.top_color = c.blue
 
         # bottom rectangle
         self.bottom_rect = pygame.Rect(x, y, width, height)
-        self.bottom_color = '#354B5E'
+        self.bottom_color = c.darkBlue
         # text
-        self.text_surf = font2.render(text, True, '#FFFFFF')
+        self.text_surf = font2.render(text, True, c.white)
         self.text_rect = self.text_surf.get_rect(center=self.top_rect.center)
 
     def draw(self):
@@ -58,7 +63,7 @@ class Button:
         mouse_pos = pygame.mouse.get_pos()
         if self.type == 1:
             if self.top_rect.collidepoint(mouse_pos):
-                self.top_color = '#D74B4B'
+                self.top_color = c.coral
                 if pygame.mouse.get_pressed()[0]:
                     self.clickSound.play()
                     self.dynamic_elevation = 0
@@ -68,14 +73,14 @@ class Button:
 
             else:
                 self.dynamic_elevation = self.elevation
-                self.top_color = '#475F77'
+                self.top_color = c.blue
 
         if self.type == 2:
             if self.top_rect.collidepoint(mouse_pos):
-                self.top_color = '#475F77'
+                self.top_color = c.blue
                 if pygame.mouse.get_pressed()[0]:
                     self.dynamic_elevation = 0
-                    self.top_color = '#D74B4B'
+                    self.top_color = c.coral
                     self.pressed = True
                     word.check_letter(self.letter)
                 else:
@@ -84,9 +89,9 @@ class Button:
                     self.dynamic_elevation = self.dynamic_elevation
 
                 else:
-                    self.top_color = '#D74B4B'
+                    self.top_color = c.coral
             else:
-                self.top_color = '#475F77'
+                self.top_color = c.blue
 
 
 class GameWindow:
@@ -130,10 +135,10 @@ class Word:
         self.correctSound.set_volume(0.3)
 
     def draw_spaced(self):
-        screen.blit(font1.render(self.space_out_word(), True, "#FFFFFF"), self.spaced_word_rect)
+        screen.blit(font1.render(self.space_out_word(), True, c.white), self.spaced_word_rect)
 
     def draw_full(self):
-        screen.blit(font3.render('Слово раунду: ' + self.word, True, "#FFFFFF"), self.full_word_rect)
+        screen.blit(font3.render('Слово раунду: ' + self.word, True, c.white), self.full_word_rect)
 
     def select_word(self):
         if self.level == 1:
@@ -204,15 +209,11 @@ def redraw_window():
 
 
 # шрифти налаштування
-newFont = "materials/Adigiana_Extreme.ttf"
-font1 = pygame.font.Font(newFont, 60)
-font2 = pygame.font.Font(newFont, 30)
-font3 = pygame.font.Font(newFont, 40)
 
 # стартове вікно налаштування
 test_start_surface = pygame.image.load("materials/startpic.jpg")
-text_surface1 = font1.render("Вітаємо у словесному саду!", True, "#edeef3")
-text_surface2 = font3.render("Оберіть рівень складності гри", True, "#6d6875")
+text_surface1 = font1.render("Вітаємо у словесному саду!", True, c.milk)
+text_surface2 = font3.render("Оберіть рівень складності гри", True, c.darkViolet)
 
 # level buttons
 level_buttons = list()
@@ -227,13 +228,13 @@ play_again_button = Button('Грати знову', 140, 50, 810, 400, 10, 1)
 exit_button = Button('Вийти з гри', 140, 50, 50, 400, 10, 1)
 
 # вікна на рівні
-lvl1 = GameWindow("#AE6378", "#edeef3", "Рівень 1", "materials/lvl1.1.jpg", 350, 1, 30, 70, 1)
-lvl2 = GameWindow("#EAB595", "#79616F", "Рівень 2", "materials/lvl2.1.jpg", 350, 1, 30, 70, 1)
-lvl3 = GameWindow("#7E9680", "#F5CEC7", "Рівень 3", "materials/lvl3.1.jpg", 350, 1, 30, 70, 1)
-lvl4 = GameWindow("#B5838D", "#FFC98B", "Рівень 4", "materials/lvl4.1.jpg", 350, 1, 30, 70, 1)
-lvl5 = GameWindow("#D0637C", "#EAB595", "Рівень 5", "materials/lvl5.1.jpg", 350, 1, 30, 70, 1)
-lost1 = GameWindow("#EAB595", "#79616F", "О ні, ви вбили квіточки((", "materials/lost1.jpg", 250, 1, 0, 0, 2)
-won1 = GameWindow("#EAB595", "#79616F", "Вітаю, ви вберегли сад!", "materials/win1.jpg", 250, 1, 0, 0, 2)
+lvl1 = GameWindow(c.violet, c.milk, "Рівень 1", "materials/lvl1.1.jpg", 350, 1, 30, 70, 1)
+lvl2 = GameWindow(c.sandColour, c.darkViolet, "Рівень 2", "materials/lvl2.1.jpg", 350, 1, 30, 70, 1)
+lvl3 = GameWindow(c.lightGreen, c.milkPink, "Рівень 3", "materials/lvl3.1.jpg", 350, 1, 30, 70, 1)
+lvl4 = GameWindow(c.lightViolet, c.lightOrange, "Рівень 4", "materials/lvl4.1.jpg", 350, 1, 30, 70, 1)
+lvl5 = GameWindow(c.strikingPink, c.sandColour, "Рівень 5", "materials/lvl5.1.jpg", 350, 1, 30, 70, 1)
+lost1 = GameWindow(c.sandColour, c.darkViolet, "О ні, ви вбили квіточки((", "materials/lost1.jpg", 250, 1, 0, 0, 2)
+won1 = GameWindow(c.sandColour, c.darkViolet, "Вітаю, ви вберегли сад!", "materials/win1.jpg", 250, 1, 0, 0, 2)
 
 
 def blit_text(surface, text, pos, font):
@@ -243,7 +244,7 @@ def blit_text(surface, text, pos, font):
     max_width, max_height = surface.get_size()
     for line in text:
         for word in line:
-            word_surface = font.render(word, True, "#edeef3").convert_alpha()
+            word_surface = font.render(word, True, c.milk).convert_alpha()
             word_width, word_height = word_surface.get_size()
             if x + word_width >= max_width:
                 x = pos[0]  # Reset the x.
@@ -255,7 +256,7 @@ def blit_text(surface, text, pos, font):
 
 
 text = open("materials/rules.txt", encoding="UTF8").readlines()
-text_rules1 = font1.render("Правила гри", True, "#edeef3")
+text_rules1 = font1.render("Правила гри", True, c.milk)
 
 
 # кнопки букви розташування
@@ -461,7 +462,7 @@ while True:
                 exit()
 
         elif rules:
-            screen.fill("#D87F81")
+            screen.fill(c.lightPink)
             screen.blit(text_rules1, (250, 10))
             blit_text(screen, text, (50, 100), font2)
             go_back_button.draw()

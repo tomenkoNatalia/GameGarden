@@ -1,0 +1,14 @@
+sandColour = "#EAB595"
+violet = "#AE6378"
+milk = "#EDEEF3"
+darkViolet = "#79616F"
+lightGreen = "#7E9680"
+milkPink = "#F5CEC7"
+lightViolet = "#B5838D"
+lightOrange = "#FFC98B"
+strikingPink = "#D0637C"
+lightPink = "#D87F81"
+white = "#FFFFFF"
+blue = '#475F77'
+darkBlue = '#354B5E'
+coral = '#D74B4B'
