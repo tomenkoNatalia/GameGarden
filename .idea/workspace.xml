@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="flowers disappear yay">
+    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="Line wrapping works">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,6 +286,7 @@
       <option name="project" value="LOCAL" />
       <updated>1657379707095</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00026" summary="flowers disappear yay">
       <created>1657444154702</created>
       <option name="number" value="00026" />
@@ -295,6 +295,37 @@
       <updated>1657444154702</updated>
     </task>
     <option name="localTasksCounter" value="27" />
+=======
+    <task id="LOCAL-00026" summary="changed draw_full() a bit">
+      <created>1657380733784</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1657380733784</updated>
+    </task>
+    <task id="LOCAL-00027" summary="added some sounds, changed exit button a bit">
+      <created>1657388899680</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1657388899680</updated>
+    </task>
+    <task id="LOCAL-00028" summary="changed anyButton sound">
+      <created>1657389071566</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1657389071566</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Line wrapping works">
+      <created>1657396455370</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1657396455370</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
+>>>>>>> Sofi
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,9 +349,12 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+<<<<<<< HEAD
     <MESSAGE value="buttons work somehow but still have problems" />
     <MESSAGE value="letter button(type2) is kinda setup" />
     <MESSAGE value="buttons are actually working now" />
+=======
+>>>>>>> Sofi
     <MESSAGE value="all windows are set up" />
     <MESSAGE value="letter buttons rendering optimized" />
     <MESSAGE value="levels in one list" />
@@ -342,14 +376,26 @@
     <MESSAGE value="fixed exit window bug" />
     <MESSAGE value="added button exit on the start screen" />
     <MESSAGE value="rewrote letter buttons" />
+<<<<<<< HEAD
     <MESSAGE value="flowers disappear yay" />
     <option name="LAST_COMMIT_MESSAGE" value="flowers disappear yay" />
+=======
+    <MESSAGE value="changed draw_full() a bit" />
+    <MESSAGE value="added some sounds, changed exit button a bit" />
+    <MESSAGE value="changed anyButton sound" />
+    <MESSAGE value="Line wrapping works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Line wrapping works" />
+>>>>>>> Sofi
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+<<<<<<< HEAD
     <SUITE FILE_PATH="coverage/GameGarden$main.coverage" NAME="main Coverage Results" MODIFIED="1657444934611" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+=======
+    <SUITE FILE_PATH="coverage/GameGarden$main.coverage" NAME="main Coverage Results" MODIFIED="1657445218165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+>>>>>>> Sofi
   </component>
 </project>
