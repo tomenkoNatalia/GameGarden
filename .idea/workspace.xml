@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="Line wrapping works">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -372,7 +371,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657389071566</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Line wrapping works">
+      <created>1657396455370</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1657396455370</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,7 +402,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="buttons are actually working now" />
     <MESSAGE value="all windows are set up" />
     <MESSAGE value="letter buttons rendering optimized" />
     <MESSAGE value="levels in one list" />
@@ -421,7 +426,8 @@
     <MESSAGE value="changed draw_full() a bit" />
     <MESSAGE value="added some sounds, changed exit button a bit" />
     <MESSAGE value="changed anyButton sound" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed anyButton sound" />
+    <MESSAGE value="Line wrapping works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Line wrapping works" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
