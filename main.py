@@ -277,7 +277,7 @@ def reset_window():
     for level_button in level_buttons:
         level_button.draw()
     rules_button.draw()
-    # exit_button.draw()
+    exit_button.draw()
     for letter in letter_buttons:
         letter.pressed = False
         letter.dynamic_elevation = 10
@@ -326,9 +326,9 @@ while True:
             elif rules_button.pressed:
                 start_game = False
                 rules = True
-            # elif exit_button.pressed:
-            #     pygame.quit()
-            #     exit()
+            elif exit_button.pressed:
+                 pygame.quit()
+                 exit()
 
         elif level1:
             lvl1.draw()
