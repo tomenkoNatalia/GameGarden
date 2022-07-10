@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="added exit button again, should work okay">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/colours.py" beforeDir="false" afterPath="$PROJECT_DIR$/colours.py" afterDir="false" />
+    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="added rules and changed some colours">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/materials/rules.txt" beforeDir="false" afterPath="$PROJECT_DIR$/materials/rules.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -416,7 +413,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657456951031</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="added rules and changed some colours">
+      <created>1657457907816</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1657457907816</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -440,7 +444,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="displays 1 letter" />
     <MESSAGE value="guessing letters works in english" />
     <MESSAGE value="works in ukrainian" />
     <MESSAGE value="fixed the letter not showing problem(?)" />
@@ -465,7 +468,8 @@
     <MESSAGE value="added colours file" />
     <MESSAGE value="unnecessary comments deleted, formated file a bit" />
     <MESSAGE value="added exit button again, should work okay" />
-    <option name="LAST_COMMIT_MESSAGE" value="added exit button again, should work okay" />
+    <MESSAGE value="added rules and changed some colours" />
+    <option name="LAST_COMMIT_MESSAGE" value="added rules and changed some colours" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

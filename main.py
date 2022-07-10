@@ -9,6 +9,7 @@ width = 1000
 height = 500
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Словесний сад")
+pygame.display.set_icon(pygame.image.load('materials/flowerpos1.png'))
 clock = pygame.time.Clock()
 start_game = True
 level1 = False
