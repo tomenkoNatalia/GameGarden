@@ -155,33 +155,35 @@ class Word:
         if contains:
             self.guessed += letter
         else:
+            flowers_group.sprites()[0].kill()
             self.errors += 1
 
 
-groupLvl1 = pygame.sprite.Group()
-groupLvl2 = pygame.sprite.Group()
-groupLvl3 = pygame.sprite.Group()
-groupLvl4 = pygame.sprite.Group()
-groupLvl5 = pygame.sprite.Group()
+flowers_group = pygame.sprite.Group()
 
-# flowers setup
-x = 40
-for i in range(5):
-    groupLvl1.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(40 + x, 320))
-    x += 120
-x = 40
-for i in range(4):
-    groupLvl2.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(40 + x, 320))
-    x += 180
-x = 40
-for i in range(3):
-    groupLvl3.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(40 + x, 320))
-    groupLvl4.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(350, 320))
-    x += 270
-x = 40
-for i in range(2):
-    groupLvl5.add(Flowers(40 + x, 120), Flowers(40 + x, 300), Flowers(580, 200))
-    x += 270
+
+def set_flowers(level):
+    x = 40
+    if level == 1:
+        for i in range(5):
+            flowers_group.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(40 + x, 320))
+            x += 120
+    if level == 2:
+        for i in range(4):
+            flowers_group.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(40 + x, 320))
+            x += 180
+    if level == 3:
+        for i in range(3):
+            flowers_group.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(40 + x, 320))
+            x += 270
+    if level == 4:
+        for i in range(3):
+            flowers_group.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(350, 320))
+            x += 270
+    if level == 5:
+        for i in range(2):
+            flowers_group.add(Flowers(40 + x, 120), Flowers(40 + x, 300), Flowers(580, 200))
+            x += 270
 
 
 def redraw_window():
@@ -247,6 +249,8 @@ for i in range(7):
     x_position += 40
 
 
+
+
 def reset_window():
     screen.blit(test_start_surface, (0, 0))
     screen.blit(text_surface1, (200, 50))
@@ -258,7 +262,7 @@ def reset_window():
     for letter in letter_buttons:
         letter.pressed = False
         letter.dynamic_elevation = 10
-        # повернути розмір кнопок
+    flowers_group.empty()
 
 
 # Сам процес гри
@@ -272,22 +276,27 @@ while True:
             if level_buttons[0].pressed:
                 start_game = False
                 level1 = True
+                set_flowers(1)
                 word = Word(1)
             elif level_buttons[1].pressed:
                 start_game = False
                 level2 = True
+                set_flowers(2)
                 word = Word(2)
             elif level_buttons[2].pressed:
                 start_game = False
                 level3 = True
+                set_flowers(3)
                 word = Word(3)
             elif level_buttons[3].pressed:
                 start_game = False
                 level4 = True
+                set_flowers(4)
                 word = Word(4)
             elif level_buttons[4].pressed:
                 start_game = False
                 level5 = True
+                set_flowers(5)
                 word = Word(5)
             elif rules_button.pressed:
                 start_game = False
@@ -298,8 +307,8 @@ while True:
 
         elif level1:
             lvl1.draw()
-            groupLvl1.draw(screen)
-            groupLvl1.update()
+            flowers_group.draw(screen)
+            flowers_group.update()
 
             level_buttons[0].pressed = False
             if word.errors >= 15:
@@ -318,8 +327,9 @@ while True:
 
         elif level2:
             lvl2.draw()
-            groupLvl2.draw(screen)
-            groupLvl2.update()
+            flowers_group.draw(screen)
+            flowers_group.update()
+
             level_buttons[1].pressed = False
             if word.errors >= 12:
                 level2 = False
@@ -337,8 +347,9 @@ while True:
 
         elif level3:
             lvl3.draw()
-            groupLvl3.draw(screen)
-            groupLvl3.update()
+            flowers_group.draw(screen)
+            flowers_group.update()
+
             level_buttons[2].pressed = False
             if word.errors >= 9:
                 level3 = False
@@ -356,8 +367,9 @@ while True:
 
         elif level4:
             lvl4.draw()
-            groupLvl4.draw(screen)
-            groupLvl4.update()
+            flowers_group.draw(screen)
+            flowers_group.update()
+
             level_buttons[3].pressed = False
             if word.errors >= 7:
                 level4 = False
@@ -375,8 +387,9 @@ while True:
 
         elif level5:
             lvl5.draw()
-            groupLvl5.draw(screen)
-            groupLvl5.update()
+            flowers_group.draw(screen)
+            flowers_group.update()
+
             level_buttons[4].pressed = False
             if word.errors >= 5:
                 level5 = False
