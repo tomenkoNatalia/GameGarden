@@ -1,6 +1,7 @@
 import pygame
 from sys import exit
 import random
+from flowers import Flowers
 
 pygame.init()
 width = 1000
@@ -87,6 +88,7 @@ class Button:
 
 
 class GameWindow:
+
     def __init__(self, back, colorText, text, field, xtext, ytext, xfield, yfield, type=1):
         self.background = back
         self.text = font1.render(text, True, colorText)
@@ -115,14 +117,14 @@ class Word:
         self.word = self.select_word()
         self.guessed = ''
         self.spaced_word_rect = pygame.Rect(100, 400, 100, 100)
-        self.full_word_rect = pygame.Rect(200, 400, 100, 100)
+        self.full_word_rect = pygame.Rect(300, 400, 100, 100)
         self.errors = 0
 
     def draw_spaced(self):
         screen.blit(font1.render(self.space_out_word(), True, "#FFFFFF"), self.spaced_word_rect)
 
     def draw_full(self):
-        screen.blit(font1.render('Слово раунду: ' + self.word, True, "#FFFFFF"), self.full_word_rect)
+        screen.blit(font3.render('Слово раунду: ' + self.word, True, "#FFFFFF"), self.full_word_rect)
 
     def select_word(self):
         if self.level == 1:
@@ -156,6 +158,32 @@ class Word:
             self.errors += 1
 
 
+groupLvl1 = pygame.sprite.Group()
+groupLvl2 = pygame.sprite.Group()
+groupLvl3 = pygame.sprite.Group()
+groupLvl4 = pygame.sprite.Group()
+groupLvl5 = pygame.sprite.Group()
+
+# flowers setup
+x = 40
+for i in range(5):
+    groupLvl1.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(40 + x, 320))
+    x += 120
+x = 40
+for i in range(4):
+    groupLvl2.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(40 + x, 320))
+    x += 180
+x = 40
+for i in range(3):
+    groupLvl3.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(40 + x, 320))
+    groupLvl4.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(350, 320))
+    x += 270
+x = 40
+for i in range(2):
+    groupLvl5.add(Flowers(40 + x, 120), Flowers(40 + x, 300), Flowers(580, 200))
+    x += 270
+
+
 def redraw_window():
     for letter in letter_buttons:
         letter.draw()
@@ -171,12 +199,13 @@ font3 = pygame.font.Font(newFont, 40)
 test_start_surface = pygame.image.load("materials/startpic.jpg")
 text_surface1 = font1.render("Вітаємо у словесному саду!", True, "#edeef3")
 text_surface2 = font3.render("Оберіть рівень складності гри", True, "#6d6875")
+
+# level buttons
 level_buttons = list()
-level_buttons.append(Button('Рівень 1', 140, 60, 50, 300, 10, 1))
-level_buttons.append(Button('Рівень 2', 140, 60, 240, 300, 10, 1))
-level_buttons.append(Button('Рівень 3', 140, 60, 430, 300, 10, 1))
-level_buttons.append(Button('Рівень 4', 140, 60, 620, 300, 10, 1))
-level_buttons.append(Button('Рівень 5', 140, 60, 810, 300, 10, 1))
+x = 50
+for i in range(5):
+    level_buttons.append(Button('Рівень ' + str(i+1), 140, 60, x, 300, 10, 1))
+    x += 190
 
 rules_button = Button('Правила гри', 200, 80, 400, 400, 10, 1)
 go_back_button = Button('Назад', 140, 50, 810, 400, 10, 1)
@@ -225,11 +254,11 @@ def reset_window():
     for level_button in level_buttons:
         level_button.draw()
     rules_button.draw()
+    # exit_button.draw()
     for letter in letter_buttons:
         letter.pressed = False
         letter.dynamic_elevation = 10
         # повернути розмір кнопок
-
 
 
 # Сам процес гри
@@ -263,9 +292,15 @@ while True:
             elif rules_button.pressed:
                 start_game = False
                 rules = True
+            # elif exit_button.pressed:
+            #     pygame.quit()
+            #     exit()
 
         elif level1:
             lvl1.draw()
+            groupLvl1.draw(screen)
+            groupLvl1.update()
+
             level_buttons[0].pressed = False
             if word.errors >= 15:
                 level1 = False
@@ -283,6 +318,8 @@ while True:
 
         elif level2:
             lvl2.draw()
+            groupLvl2.draw(screen)
+            groupLvl2.update()
             level_buttons[1].pressed = False
             if word.errors >= 12:
                 level2 = False
@@ -300,6 +337,8 @@ while True:
 
         elif level3:
             lvl3.draw()
+            groupLvl3.draw(screen)
+            groupLvl3.update()
             level_buttons[2].pressed = False
             if word.errors >= 9:
                 level3 = False
@@ -317,6 +356,8 @@ while True:
 
         elif level4:
             lvl4.draw()
+            groupLvl4.draw(screen)
+            groupLvl4.update()
             level_buttons[3].pressed = False
             if word.errors >= 7:
                 level4 = False
@@ -334,6 +375,8 @@ while True:
 
         elif level5:
             lvl5.draw()
+            groupLvl5.draw(screen)
+            groupLvl5.update()
             level_buttons[4].pressed = False
             if word.errors >= 5:
                 level5 = False
