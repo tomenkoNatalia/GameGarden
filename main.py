@@ -117,7 +117,7 @@ class Word:
         self.word = self.select_word()
         self.guessed = ''
         self.spaced_word_rect = pygame.Rect(100, 400, 100, 100)
-        self.full_word_rect = pygame.Rect(300, 400, 100, 100)
+        self.full_word_rect = pygame.Rect(300, 430, 100, 100)
         self.errors = 0
 
     def draw_spaced(self):
@@ -220,8 +220,8 @@ lvl2 = GameWindow("#EAB595", "#79616F", "Рівень 2", "materials/lvl2.1.jpg"
 lvl3 = GameWindow("#EAB595", "#79616F", "Рівень 3", "materials/lvl3.1.jpg", 350, 1, 30, 70, 1)
 lvl4 = GameWindow("#EAB595", "#79616F", "Рівень 4", "materials/lvl4.1.jpg", 350, 1, 30, 70, 1)
 lvl5 = GameWindow("#EAB595", "#79616F", "Рівень 5", "materials/lvl5.1.jpg", 350, 1, 30, 70, 1)
-lost1 = GameWindow("#EAB595", "#79616F", "О ні, ви програли((", "materials/lost1.jpg", 350, 1, 0, 0, 2)
-won1 = GameWindow("#EAB595", "#79616F", "Вітаю, ви виграли!", "materials/win1.jpg", 300, 1, 0, 0, 2)
+lost1 = GameWindow("#EAB595", "#79616F", "О ні, ви вбили квіточки((", "materials/lost1.jpg", 250, 1, 0, 0, 2)
+won1 = GameWindow("#EAB595", "#79616F", "Вітаю, ви вберегли сад!", "materials/win1.jpg", 250, 1, 0, 0, 2)
 
 # для правил
 text_rules1 = font1.render("Правила гри", True, "#edeef3")
