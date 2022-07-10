@@ -25,9 +25,10 @@ font1 = pygame.font.Font(newFont, 60)
 font2 = pygame.font.Font(newFont, 30)
 font3 = pygame.font.Font(newFont, 40)
 
+
 class Button:
     def __init__(self, text, width, height, x, y, elevation, type=1):
-        # Core attributes
+
         self.letter = text
         self.type = type
         self.pressed = False
@@ -39,7 +40,6 @@ class Button:
         self.top_rect = pygame.Rect(x, y, width, height)
         self.top_color = c.blue
 
-        # bottom rectangle
         self.bottom_rect = pygame.Rect(x, y, width, height)
         self.bottom_color = c.darkBlue
         # text
@@ -47,7 +47,6 @@ class Button:
         self.text_rect = self.text_surf.get_rect(center=self.top_rect.center)
 
     def draw(self):
-        # elevation logic
         self.top_rect.y = self.original_y_pos - self.dynamic_elevation
         self.text_rect.center = self.top_rect.center
         self.clickSound = pygame.mixer.Sound("materials/Sounds/anyButton.wav")
@@ -103,9 +102,6 @@ class GameWindow:
         self.field = pygame.image.load(field)
         self.field_rect = pygame.Rect(xfield, yfield, 10, 300)
         self.type = type
-        # self.loseMusic = pygame.mixer.Sound("materials/Sounds/lose.wav")
-        # self.winMusic = pygame.mixer.Sound("materials/Sounds/win.wav")
- # anytime I try implement these sounds they run continuously, no idea how to fix
 
     def draw(self):
 
@@ -120,6 +116,7 @@ class GameWindow:
             play_again_button.draw()
             exit_button.draw()
             word.draw_full()
+
 
 class Word:
     def __init__(self, level):
@@ -208,8 +205,6 @@ def redraw_window():
         letter.draw()
 
 
-# шрифти налаштування
-
 # стартове вікно налаштування
 test_start_surface = pygame.image.load("materials/startpic.jpg")
 text_surface1 = font1.render("Вітаємо у словесному саду!", True, c.milk)
@@ -247,17 +242,16 @@ def blit_text(surface, text, pos, font):
             word_surface = font.render(word, True, c.milk).convert_alpha()
             word_width, word_height = word_surface.get_size()
             if x + word_width >= max_width:
-                x = pos[0]  # Reset the x.
-                y += word_height  # Start on new row.
+                x = pos[0]
+                y += word_height
             surface.blit(word_surface, (x, y))
             x += word_width + space
-        x = pos[0]  # Reset the x.
-        y += word_height  # Start on new row.
+        x = pos[0]
+        y += word_height
 
 
 text = open("materials/rules.txt", encoding="UTF8").readlines()
 text_rules1 = font1.render("Правила гри", True, c.milk)
-
 
 # кнопки букви розташування
 letter_buttons = []
@@ -274,8 +268,6 @@ for i in range(7):
     if i < 5:
         letter_buttons.append(Button(alphabet[i + 28], 30, 40, x_position, y_position + 200, 5, 2))
     x_position += 40
-
-
 
 
 def reset_window():

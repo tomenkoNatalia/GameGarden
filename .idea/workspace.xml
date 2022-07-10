@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="changed level colours">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="863df6c6-d6e5-48db-a49a-5b062a2d062f" name="Changes" comment="added colours file">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -393,7 +392,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657454620550</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="added colours file">
+      <created>1657456459990</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1657456459990</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -417,7 +423,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="levels in one list" />
     <MESSAGE value="displays dashes, only english words" />
     <MESSAGE value="separate class for word" />
     <MESSAGE value="displays 1 letter" />
@@ -442,7 +447,8 @@
     <MESSAGE value="Line wrapping works" />
     <MESSAGE value="changed flowers again" />
     <MESSAGE value="changed level colours" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed level colours" />
+    <MESSAGE value="added colours file" />
+    <option name="LAST_COMMIT_MESSAGE" value="added colours file" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
