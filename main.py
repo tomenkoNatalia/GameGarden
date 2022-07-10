@@ -189,12 +189,12 @@ def set_flowers(level):
             flowers_group.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(40 + x, 320))
             x += 270
     if level == 4:
-        for i in range(3):
-            flowers_group.add(Flowers(40 + x, 120), Flowers(40 + x, 220), Flowers(350, 320))
-            x += 270
+        for i in range(4):
+            flowers_group.add(Flowers(40 + x, 120), Flowers(40 + x, 300))
+            x += 150
     if level == 5:
         for i in range(2):
-            flowers_group.add(Flowers(40 + x, 120), Flowers(40 + x, 300), Flowers(580, 200))
+            flowers_group.add(Flowers(40 + x, 120), Flowers(40 + x, 300), Flowers(40 + x, 200))
             x += 270
 
 
@@ -403,7 +403,7 @@ while True:
             flowers_group.update()
 
             level_buttons[3].pressed = False
-            if word.errors >= 7:
+            if word.errors >= 8:
                 level4 = False
                 lost = True
 
@@ -423,7 +423,7 @@ while True:
             flowers_group.update()
 
             level_buttons[4].pressed = False
-            if word.errors >= 5:
+            if word.errors >= 6:
                 level5 = False
                 lost = True
 
